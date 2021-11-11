@@ -9,26 +9,39 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var keyStorage: ApiKeyStorage
+    var controller: ApiController {
+        return ApiController(storage: keyStorage)
+    }
     @State var showSetupAPI: Bool = false
     var body: some View {
         NavigationView {
-            Text("Hello, world!")
-                .padding()
-                .sheet(isPresented: self.$showSetupAPI) {
-                    ApiView()
-                }
-                .onAppear {
-                    print("On appear")
-                    if keyStorage.apiKey.isEmpty {
-                        self.showSetupAPI = true
+            VStack {
+                Text("Hello, world!")
+                    .padding()
+                    .sheet(isPresented: self.$showSetupAPI) {
+                        ApiView()
                     }
+            }
+            .onAppear {
+                print("On appear")
+                if keyStorage.apiKey.isEmpty {
+                    self.showSetupAPI = true
+                } else {
+                    controller.customerList(result: { (data, response, error) in
+                        let decoder = JSONDecoder()
+                        if  let responseData = data,
+                            let contactList = try? decoder.decode(AbbrevContactList.self, from: responseData) {
+                            print("Contacts: \(contactList)")
+                        }
+                    })
                 }
+            }
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(MockApiKeyStorage(key: "asdfasdf"))
     }
 }

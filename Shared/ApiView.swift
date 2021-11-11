@@ -5,6 +5,7 @@
 //  Created by Evan Anger on 11/11/21.
 //
 
+import CodeScanner
 import Combine
 import SwiftUI
 import CameraView
@@ -13,10 +14,22 @@ struct ApiView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var keyStorage: ApiKeyStorage
     @State var showCamera: Bool = false
+    
+    var scannerSheet : some View {
+        CodeScannerView(
+            codeTypes: [.qr],
+            completion: { result in
+                if case let .success(code) = result {
+                    self.keyStorage.add(code)
+                    self.showCamera.toggle()
+                }
+            }
+        )
+    }
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Sendgrid API Key", text: $keyStorage.apiKey2)
+                TextField("Sendgrid API Key", text: $keyStorage.apiKey)
                     .textFieldStyle(.roundedBorder)
                     .padding(10)
                     
@@ -45,7 +58,7 @@ struct ApiView: View {
             .sheet(isPresented: $showCamera, onDismiss: {
                 
             }, content: {
-                CameraView(cameraType: .builtInDualCamera, cameraPosition: .back)
+                self.scannerSheet
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

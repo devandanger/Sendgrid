@@ -22,6 +22,11 @@
 		8A69E1C3273CE3E600B3B736 /* ApiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1C1273CE3E600B3B736 /* ApiView.swift */; };
 		8A69E1C6273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1C5273CE4A700B3B736 /* ApiKeyStorage.swift */; };
 		8A69E1C7273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1C5273CE4A700B3B736 /* ApiKeyStorage.swift */; };
+		8A69E1CA273CEED200B3B736 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 8A69E1C9273CEED200B3B736 /* CodeScanner */; };
+		8A69E1CC273CF2FD00B3B736 /* SendgridApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1CB273CF2FD00B3B736 /* SendgridApi.swift */; };
+		8A69E1CD273CF2FD00B3B736 /* SendgridApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1CB273CF2FD00B3B736 /* SendgridApi.swift */; };
+		8A69E1D3273D4E7200B3B736 /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1D2273D4E7200B3B736 /* ContactList.swift */; };
+		8A69E1D4273D4E7200B3B736 /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1D2273D4E7200B3B736 /* ContactList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +61,8 @@
 		8A69E1A8273CE07200B3B736 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
 		8A69E1C1273CE3E600B3B736 /* ApiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiView.swift; sourceTree = "<group>"; };
 		8A69E1C5273CE4A700B3B736 /* ApiKeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyStorage.swift; sourceTree = "<group>"; };
+		8A69E1CB273CF2FD00B3B736 /* SendgridApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendgridApi.swift; sourceTree = "<group>"; };
+		8A69E1D2273D4E7200B3B736 /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A69E1CA273CEED200B3B736 /* CodeScanner in Frameworks */,
 				8A69E1C0273CE2AF00B3B736 /* CameraView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,9 +162,19 @@
 		8A69E1C4273CE46600B3B736 /* Environments */ = {
 			isa = PBXGroup;
 			children = (
+				8A69E1D1273D4E5F00B3B736 /* Models */,
 				8A69E1C5273CE4A700B3B736 /* ApiKeyStorage.swift */,
+				8A69E1CB273CF2FD00B3B736 /* SendgridApi.swift */,
 			);
 			path = Environments;
+			sourceTree = "<group>";
+		};
+		8A69E1D1273D4E5F00B3B736 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8A69E1D2273D4E7200B3B736 /* ContactList.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +195,7 @@
 			name = "Sendgrid (iOS)";
 			packageProductDependencies = (
 				8A69E1BF273CE2AF00B3B736 /* CameraView */,
+				8A69E1C9273CEED200B3B736 /* CodeScanner */,
 			);
 			productName = "Sendgrid (iOS)";
 			productReference = 8A69E189273CE07200B3B736 /* Sendgrid.app */;
@@ -272,6 +291,7 @@
 			mainGroup = 8A69E17C273CE07100B3B736;
 			packageReferences = (
 				8A69E1BE273CE2AF00B3B736 /* XCRemoteSwiftPackageReference "CameraView" */,
+				8A69E1C8273CEED200B3B736 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 8A69E18A273CE07200B3B736 /* Products */;
 			projectDirPath = "";
@@ -323,10 +343,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A69E1D3273D4E7200B3B736 /* ContactList.swift in Sources */,
 				8A69E1AC273CE07200B3B736 /* ContentView.swift in Sources */,
 				8A69E1AA273CE07200B3B736 /* SendgridApp.swift in Sources */,
 				8A69E1C6273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
 				8A69E1C2273CE3E600B3B736 /* ApiView.swift in Sources */,
+				8A69E1CC273CF2FD00B3B736 /* SendgridApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,10 +356,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A69E1D4273D4E7200B3B736 /* ContactList.swift in Sources */,
 				8A69E1AD273CE07200B3B736 /* ContentView.swift in Sources */,
 				8A69E1AB273CE07200B3B736 /* SendgridApp.swift in Sources */,
 				8A69E1C7273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
 				8A69E1C3273CE3E600B3B736 /* ApiView.swift in Sources */,
+				8A69E1CD273CF2FD00B3B736 /* SendgridApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +789,14 @@
 				minimumVersion = 0.0.1;
 			};
 		};
+		8A69E1C8273CEED200B3B736 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -772,6 +804,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A69E1BE273CE2AF00B3B736 /* XCRemoteSwiftPackageReference "CameraView" */;
 			productName = CameraView;
+		};
+		8A69E1C9273CEED200B3B736 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A69E1C8273CEED200B3B736 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

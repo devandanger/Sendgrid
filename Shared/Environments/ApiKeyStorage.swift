@@ -5,17 +5,35 @@
 //  Created by Evan Anger on 11/11/21.
 //
 
+import Combine
 import Foundation
+import SwiftUI
 
-class ApiKeyStorage: ObservableObject {
-    var apiKey: String = ""
-    var apiKey2: String = "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"
+protocol KeyStorage {
+    var apiKey: String {
+        get
+        set
+    }
+}
+
+class ApiKeyStorage: KeyStorage, ObservableObject {
+    @AppStorage("apiKey") var apiKey: String = ""
     
     func delete() {
-        apiKey2 = ""
+        apiKey = ""
     }
     
     func add(_ key: String) {
-        apiKey2 = key
+        apiKey = key
     }
+}
+
+
+class MockApiKeyStorage: KeyStorage, ObservableObject {
+    var apiKey: String
+    init(key: String) {
+        self.apiKey = key
+    }
+    func delete() {}
+    func add(_ key: String) {}
 }
