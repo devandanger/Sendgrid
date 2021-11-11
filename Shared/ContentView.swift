@@ -8,9 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var keyStorage: ApiKeyStorage
+    @State var showSetupAPI: Bool = false
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            Text("Hello, world!")
+                .padding()
+                .sheet(isPresented: self.$showSetupAPI) {
+                    ApiView()
+                }
+                .onAppear {
+                    print("On appear")
+                    if keyStorage.apiKey.isEmpty {
+                        self.showSetupAPI = true
+                    }
+                }
+        }
     }
 }
 

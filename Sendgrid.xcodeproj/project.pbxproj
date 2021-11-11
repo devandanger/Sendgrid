@@ -17,6 +17,11 @@
 		8A69E1AD273CE07200B3B736 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E183273CE07100B3B736 /* ContentView.swift */; };
 		8A69E1AE273CE07200B3B736 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A69E184273CE07200B3B736 /* Assets.xcassets */; };
 		8A69E1AF273CE07200B3B736 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A69E184273CE07200B3B736 /* Assets.xcassets */; };
+		8A69E1C0273CE2AF00B3B736 /* CameraView in Frameworks */ = {isa = PBXBuildFile; productRef = 8A69E1BF273CE2AF00B3B736 /* CameraView */; };
+		8A69E1C2273CE3E600B3B736 /* ApiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1C1273CE3E600B3B736 /* ApiView.swift */; };
+		8A69E1C3273CE3E600B3B736 /* ApiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1C1273CE3E600B3B736 /* ApiView.swift */; };
+		8A69E1C6273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1C5273CE4A700B3B736 /* ApiKeyStorage.swift */; };
+		8A69E1C7273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1C5273CE4A700B3B736 /* ApiKeyStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,8 @@
 		8A69E1A2273CE07200B3B736 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A69E1A6273CE07200B3B736 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		8A69E1A8273CE07200B3B736 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		8A69E1C1273CE3E600B3B736 /* ApiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiView.swift; sourceTree = "<group>"; };
+		8A69E1C5273CE4A700B3B736 /* ApiKeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A69E1C0273CE2AF00B3B736 /* CameraView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +105,8 @@
 		8A69E181273CE07100B3B736 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8A69E1C4273CE46600B3B736 /* Environments */,
+				8A69E1C1273CE3E600B3B736 /* ApiView.swift */,
 				8A69E182273CE07100B3B736 /* SendgridApp.swift */,
 				8A69E183273CE07100B3B736 /* ContentView.swift */,
 				8A69E184273CE07200B3B736 /* Assets.xcassets */,
@@ -141,6 +151,14 @@
 			path = "Tests macOS";
 			sourceTree = "<group>";
 		};
+		8A69E1C4273CE46600B3B736 /* Environments */ = {
+			isa = PBXGroup;
+			children = (
+				8A69E1C5273CE4A700B3B736 /* ApiKeyStorage.swift */,
+			);
+			path = Environments;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,6 +175,9 @@
 			dependencies = (
 			);
 			name = "Sendgrid (iOS)";
+			packageProductDependencies = (
+				8A69E1BF273CE2AF00B3B736 /* CameraView */,
+			);
 			productName = "Sendgrid (iOS)";
 			productReference = 8A69E189273CE07200B3B736 /* Sendgrid.app */;
 			productType = "com.apple.product-type.application";
@@ -249,6 +270,9 @@
 				Base,
 			);
 			mainGroup = 8A69E17C273CE07100B3B736;
+			packageReferences = (
+				8A69E1BE273CE2AF00B3B736 /* XCRemoteSwiftPackageReference "CameraView" */,
+			);
 			productRefGroup = 8A69E18A273CE07200B3B736 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -301,6 +325,8 @@
 			files = (
 				8A69E1AC273CE07200B3B736 /* ContentView.swift in Sources */,
 				8A69E1AA273CE07200B3B736 /* SendgridApp.swift in Sources */,
+				8A69E1C6273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
+				8A69E1C2273CE3E600B3B736 /* ApiView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +336,8 @@
 			files = (
 				8A69E1AD273CE07200B3B736 /* ContentView.swift in Sources */,
 				8A69E1AB273CE07200B3B736 /* SendgridApp.swift in Sources */,
+				8A69E1C7273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
+				8A69E1C3273CE3E600B3B736 /* ApiView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +496,7 @@
 				DEVELOPMENT_TEAM = Q7BEAG244J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need access to camera to easily enter a new API Key";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -498,6 +527,7 @@
 				DEVELOPMENT_TEAM = Q7BEAG244J;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need access to camera to easily enter a new API Key";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -725,6 +755,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A69E1BE273CE2AF00B3B736 /* XCRemoteSwiftPackageReference "CameraView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/brettfazio/CameraView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A69E1BF273CE2AF00B3B736 /* CameraView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A69E1BE273CE2AF00B3B736 /* XCRemoteSwiftPackageReference "CameraView" */;
+			productName = CameraView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8A69E17D273CE07100B3B736 /* Project object */;
 }
