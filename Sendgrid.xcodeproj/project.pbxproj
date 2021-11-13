@@ -27,6 +27,26 @@
 		8A69E1CD273CF2FD00B3B736 /* SendgridApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1CB273CF2FD00B3B736 /* SendgridApi.swift */; };
 		8A69E1D3273D4E7200B3B736 /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1D2273D4E7200B3B736 /* ContactList.swift */; };
 		8A69E1D4273D4E7200B3B736 /* ContactList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1D2273D4E7200B3B736 /* ContactList.swift */; };
+		8A69E1D7273D565F00B3B736 /* ContactListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1D6273D565F00B3B736 /* ContactListItemView.swift */; };
+		8A69E1D8273D565F00B3B736 /* ContactListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1D6273D565F00B3B736 /* ContactListItemView.swift */; };
+		8A69E1DA273D5A2600B3B736 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1D9273D5A2600B3B736 /* ContactListView.swift */; };
+		8A69E1DB273D5A2600B3B736 /* ContactListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1D9273D5A2600B3B736 /* ContactListView.swift */; };
+		8A69E1DE273F6C1100B3B736 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1DD273F6C1000B3B736 /* EmailView.swift */; };
+		8A69E1DF273F6C1100B3B736 /* EmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1DD273F6C1000B3B736 /* EmailView.swift */; };
+		8A69E1E2273F6D7900B3B736 /* String+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1E1273F6D7900B3B736 /* String+Decodable.swift */; };
+		8A69E1E3273F6D7900B3B736 /* String+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1E1273F6D7900B3B736 /* String+Decodable.swift */; };
+		8A69E1E5273F78C700B3B736 /* NotImplementedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1E4273F78C700B3B736 /* NotImplementedView.swift */; };
+		8A69E1E6273F78C700B3B736 /* NotImplementedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1E4273F78C700B3B736 /* NotImplementedView.swift */; };
+		8A69E1E8273F7E8200B3B736 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1E7273F7E8200B3B736 /* Contact.swift */; };
+		8A69E1E9273F7E8200B3B736 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1E7273F7E8200B3B736 /* Contact.swift */; };
+		8A69E1EE273F89F300B3B736 /* Data+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1ED273F89F300B3B736 /* Data+Decodable.swift */; };
+		8A69E1EF273F89F300B3B736 /* Data+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1ED273F89F300B3B736 /* Data+Decodable.swift */; };
+		8A69E1F1273F8DDD00B3B736 /* ResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F0273F8DDD00B3B736 /* ResponseResult.swift */; };
+		8A69E1F2273F8DDD00B3B736 /* ResponseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F0273F8DDD00B3B736 /* ResponseResult.swift */; };
+		8A69E1F4273F949700B3B736 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F3273F949700B3B736 /* Header.swift */; };
+		8A69E1F5273F949700B3B736 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F3273F949700B3B736 /* Header.swift */; };
+		8A69E1F7273F990500B3B736 /* TestEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F6273F990500B3B736 /* TestEmailView.swift */; };
+		8A69E1F8273F990500B3B736 /* TestEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F6273F990500B3B736 /* TestEmailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +83,16 @@
 		8A69E1C5273CE4A700B3B736 /* ApiKeyStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeyStorage.swift; sourceTree = "<group>"; };
 		8A69E1CB273CF2FD00B3B736 /* SendgridApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendgridApi.swift; sourceTree = "<group>"; };
 		8A69E1D2273D4E7200B3B736 /* ContactList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactList.swift; sourceTree = "<group>"; };
+		8A69E1D6273D565F00B3B736 /* ContactListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListItemView.swift; sourceTree = "<group>"; };
+		8A69E1D9273D5A2600B3B736 /* ContactListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListView.swift; sourceTree = "<group>"; };
+		8A69E1DD273F6C1000B3B736 /* EmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailView.swift; sourceTree = "<group>"; };
+		8A69E1E1273F6D7900B3B736 /* String+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Decodable.swift"; sourceTree = "<group>"; };
+		8A69E1E4273F78C700B3B736 /* NotImplementedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotImplementedView.swift; sourceTree = "<group>"; };
+		8A69E1E7273F7E8200B3B736 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
+		8A69E1ED273F89F300B3B736 /* Data+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Decodable.swift"; sourceTree = "<group>"; };
+		8A69E1F0273F8DDD00B3B736 /* ResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseResult.swift; sourceTree = "<group>"; };
+		8A69E1F3273F949700B3B736 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		8A69E1F6273F990500B3B736 /* TestEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEmailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,10 +143,11 @@
 		8A69E181273CE07100B3B736 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8A69E1E0273F6D6500B3B736 /* Foundation */,
+				8A69E1DC273F67AD00B3B736 /* Pages */,
+				8A69E1D5273D564D00B3B736 /* Blocks */,
 				8A69E1C4273CE46600B3B736 /* Environments */,
-				8A69E1C1273CE3E600B3B736 /* ApiView.swift */,
 				8A69E182273CE07100B3B736 /* SendgridApp.swift */,
-				8A69E183273CE07100B3B736 /* ContentView.swift */,
 				8A69E184273CE07200B3B736 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -173,8 +204,41 @@
 			isa = PBXGroup;
 			children = (
 				8A69E1D2273D4E7200B3B736 /* ContactList.swift */,
+				8A69E1E7273F7E8200B3B736 /* Contact.swift */,
+				8A69E1F0273F8DDD00B3B736 /* ResponseResult.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8A69E1D5273D564D00B3B736 /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				8A69E1D6273D565F00B3B736 /* ContactListItemView.swift */,
+				8A69E1F3273F949700B3B736 /* Header.swift */,
+			);
+			path = Blocks;
+			sourceTree = "<group>";
+		};
+		8A69E1DC273F67AD00B3B736 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				8A69E1C1273CE3E600B3B736 /* ApiView.swift */,
+				8A69E183273CE07100B3B736 /* ContentView.swift */,
+				8A69E1D9273D5A2600B3B736 /* ContactListView.swift */,
+				8A69E1DD273F6C1000B3B736 /* EmailView.swift */,
+				8A69E1E4273F78C700B3B736 /* NotImplementedView.swift */,
+				8A69E1F6273F990500B3B736 /* TestEmailView.swift */,
+			);
+			path = Pages;
+			sourceTree = "<group>";
+		};
+		8A69E1E0273F6D6500B3B736 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				8A69E1E1273F6D7900B3B736 /* String+Decodable.swift */,
+				8A69E1ED273F89F300B3B736 /* Data+Decodable.swift */,
+			);
+			path = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,11 +407,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A69E1E8273F7E8200B3B736 /* Contact.swift in Sources */,
+				8A69E1F7273F990500B3B736 /* TestEmailView.swift in Sources */,
 				8A69E1D3273D4E7200B3B736 /* ContactList.swift in Sources */,
 				8A69E1AC273CE07200B3B736 /* ContentView.swift in Sources */,
+				8A69E1DE273F6C1100B3B736 /* EmailView.swift in Sources */,
+				8A69E1F1273F8DDD00B3B736 /* ResponseResult.swift in Sources */,
+				8A69E1EE273F89F300B3B736 /* Data+Decodable.swift in Sources */,
 				8A69E1AA273CE07200B3B736 /* SendgridApp.swift in Sources */,
+				8A69E1E2273F6D7900B3B736 /* String+Decodable.swift in Sources */,
+				8A69E1E5273F78C700B3B736 /* NotImplementedView.swift in Sources */,
+				8A69E1DA273D5A2600B3B736 /* ContactListView.swift in Sources */,
+				8A69E1F4273F949700B3B736 /* Header.swift in Sources */,
 				8A69E1C6273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
 				8A69E1C2273CE3E600B3B736 /* ApiView.swift in Sources */,
+				8A69E1D7273D565F00B3B736 /* ContactListItemView.swift in Sources */,
 				8A69E1CC273CF2FD00B3B736 /* SendgridApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,11 +430,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A69E1E9273F7E8200B3B736 /* Contact.swift in Sources */,
+				8A69E1F8273F990500B3B736 /* TestEmailView.swift in Sources */,
 				8A69E1D4273D4E7200B3B736 /* ContactList.swift in Sources */,
 				8A69E1AD273CE07200B3B736 /* ContentView.swift in Sources */,
+				8A69E1DF273F6C1100B3B736 /* EmailView.swift in Sources */,
+				8A69E1F2273F8DDD00B3B736 /* ResponseResult.swift in Sources */,
+				8A69E1EF273F89F300B3B736 /* Data+Decodable.swift in Sources */,
 				8A69E1AB273CE07200B3B736 /* SendgridApp.swift in Sources */,
+				8A69E1E3273F6D7900B3B736 /* String+Decodable.swift in Sources */,
+				8A69E1E6273F78C700B3B736 /* NotImplementedView.swift in Sources */,
+				8A69E1DB273D5A2600B3B736 /* ContactListView.swift in Sources */,
+				8A69E1F5273F949700B3B736 /* Header.swift in Sources */,
 				8A69E1C7273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
 				8A69E1C3273CE3E600B3B736 /* ApiView.swift in Sources */,
+				8A69E1D8273D565F00B3B736 /* ContactListItemView.swift in Sources */,
 				8A69E1CD273CF2FD00B3B736 /* SendgridApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

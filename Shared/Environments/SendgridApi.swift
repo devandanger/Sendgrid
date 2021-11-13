@@ -30,13 +30,48 @@ class ApiController {
         request.httpMethod = "GET"
 
         // Headers
-        request.addValue("Bearer \(storage.apiKey)", forHTTPHeaderField: "Authorization")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addHeaders(key: storage.apiKey)
+        
 
         /* Start a new Task */
         let task = session.dataTask(with: request, completionHandler: result)
         task.resume()
         session.finishTasksAndInvalidate()
+    }
+    
+    func sendTestEmail(result: @escaping ApiResult) {
+        
+    }
+    
+    func contactList(id listId: String, result: @escaping ApiResult) {
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+        
+
+        guard let URL = URL(string: "\(baseUrl)/v3/marketing/contacts/search") else {return}
+        var request = URLRequest(url: URL)
+        request.httpMethod = "POST"
+        
+        let body = """
+        { "query": "CONTAINS(list_ids, '\(listId)')"}
+        """
+        print("Body: \(body)")
+        request.httpBody = body.data(using: .utf8)
+
+        // Headers
+        request.addHeaders(key: storage.apiKey)
+
+        /* Start a new Task */
+        let task = session.dataTask(with: request, completionHandler: result)
+        task.resume()
+        session.finishTasksAndInvalidate()
+    }
+}
+
+extension URLRequest {
+    fileprivate mutating func addHeaders(key: String) {
+        self.addValue("Bearer \(key)", forHTTPHeaderField: "Authorization")
+        self.addValue("application/json", forHTTPHeaderField: "Content-Type")
     }
 }
 

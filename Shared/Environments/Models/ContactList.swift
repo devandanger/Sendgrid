@@ -12,6 +12,12 @@ struct AbbrevContact: Decodable {
     let id: String
     let count: Int
     
+    init(name: String, id: String, count: Int) {
+        self.name = name
+        self.id = id
+        self.count = count
+    }
+    
     enum CodingKeys: String, CodingKey {
         case count = "contact_count"
         case name
