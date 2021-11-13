@@ -10,8 +10,17 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var keyStorage: ApiKeyStorage
     @State var lists: [AbbrevContact] = []
+    @State var filterContacts: String = ""
     var controller: ApiController {
         return ApiController(storage: keyStorage)
+    }
+    
+    var filteredList: [AbbrevContact] {
+        if filterContacts.isEmpty {
+            return lists
+        } else {
+            return lists.filter { $0.name.lowercased().contains(filterContacts.lowercased()) }
+        }
     }
     @State var showSetupAPI: Bool = false
     var body: some View {
@@ -28,12 +37,15 @@ struct ContentView: View {
                     Spacer()
                 }
                 Header(name: "Contact Lists")
-                ForEach(self.lists, id: \.id) { contact in
+                TextField("Search", text: $filterContacts)
+                    .defaultStyle()
+                ForEach(self.filteredList, id: \.id) { contact in
                     ContactListItemView(contact: contact)
                 }
                 Spacer()
             }
             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

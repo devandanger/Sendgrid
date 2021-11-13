@@ -14,9 +14,28 @@ struct TestEmailView: View {
     }
 
     @State var templates: [Template] = []
+    @State var isReadyToSend: Bool = true
+    @State var selectedTemplate: String? {
+        didSet {
+            setIsReadyToSend()
+        }
+    }
     @State var isLoading: Bool = false
-    @State var fromAddress: String = "rsmith@neosportsplant"
-    @State var addresses: String = ""
+    @State var fromAddress: String = "rsmith@neosportsplant" {
+        didSet {
+            setIsReadyToSend()
+        }
+    }
+    @State var addresses: String = "" {
+        mutating didSet {
+            self.toAddresses = addresses
+                .components(separatedBy: ",")
+                .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            setIsReadyToSend()
+        }
+    }
+    @State var showTemplates: Bool = false
+    var toAddresses: [String] = []
     
     var body: some View {
         VStack {
@@ -28,14 +47,18 @@ struct TestEmailView: View {
                     TextField("From Address", text: $fromAddress)
                         .textFieldStyle(.roundedBorder)
                         .frame(height: 60)
-                    Button("Select Template") {
-                        print("Template")
+                    Header(name: "Choose Template")
+                    Picker(selection: $selectedTemplate, label: Text("Choose template")
+                            .foregroundColor(Color.white)) {
+                        ForEach(self.templates, id: \.id) {
+                            Text($0.name)
+                        }
                     }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .clipShape(Capsule())
+                    .onSubmit {
+                                
+                    }
+                    .frame(height: 50)
+                    .pickerStyle(.wheel)
                     Header(name: "Addresses")
                         .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
                     TextEditor(text: $addresses)
@@ -50,31 +73,44 @@ struct TestEmailView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    print("hello")
+                    controller.sendTestEmail(template: "d-1993c321eb084cc89de555f0510b3834", emails: toAddresses, from: fromAddress, result: { data, response, error in
+                        print("Send test email")
+                    })
                 } label: {
                     Image(systemName: "paperplane")
                 }
+                .disabled(!isReadyToSend)
             }
         }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-//            controller.getTemplates { (data, responseResult, error) in
-//
-//                guard let ts = try data?.toDecodable(type: ResponseResult<Template>.self)
-//                else {
-//                    return
-//                }
-//                isLoading = false
-//                self.templates = ts
-//            }
+            controller.getTemplates(result: { data, response, error in
+                guard
+                    let data = data,
+                    let ts = data.toDecodable(type: ResponseResult<Template>.self)
+                else {
+                    return
+                }
+                self.templates = ts.result
+                isLoading = false
+            })
         }
+    }
+    
+    func setIsReadyToSend() {
+        self.isReadyToSend = self.toAddresses.count > 0
+        && !(selectedTemplate ?? "").isEmpty
+        && !self.fromAddress.isEmpty
     }
 }
 
 struct TestEmailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            TestEmailView()
+            VStack {
+                TestEmailView()
+                    .environmentObject(ApiKeyStorage())
+            }
         }
     }
 }

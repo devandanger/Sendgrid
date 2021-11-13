@@ -53,6 +53,10 @@
 		8A69E1FF27403FFF00B3B736 /* ViewModifier+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1FD27403FFF00B3B736 /* ViewModifier+Loading.swift */; };
 		8A69E2012740410500B3B736 /* LoadingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E2002740410500B3B736 /* LoadingVStack.swift */; };
 		8A69E2022740410500B3B736 /* LoadingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E2002740410500B3B736 /* LoadingVStack.swift */; };
+		8A69E204274056B100B3B736 /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E203274056B100B3B736 /* ButtonModifier.swift */; };
+		8A69E205274056B100B3B736 /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E203274056B100B3B736 /* ButtonModifier.swift */; };
+		8A69E207274069DA00B3B736 /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E206274069DA00B3B736 /* TextFieldModifier.swift */; };
+		8A69E208274069DA00B3B736 /* TextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E206274069DA00B3B736 /* TextFieldModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +106,8 @@
 		8A69E1F9274019C200B3B736 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		8A69E1FD27403FFF00B3B736 /* ViewModifier+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModifier+Loading.swift"; sourceTree = "<group>"; };
 		8A69E2002740410500B3B736 /* LoadingVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingVStack.swift; sourceTree = "<group>"; };
+		8A69E203274056B100B3B736 /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
+		8A69E206274069DA00B3B736 /* TextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +263,8 @@
 			isa = PBXGroup;
 			children = (
 				8A69E1FD27403FFF00B3B736 /* ViewModifier+Loading.swift */,
+				8A69E203274056B100B3B736 /* ButtonModifier.swift */,
+				8A69E206274069DA00B3B736 /* TextFieldModifier.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -441,9 +449,11 @@
 				8A69E1E2273F6D7900B3B736 /* String+Decodable.swift in Sources */,
 				8A69E1E5273F78C700B3B736 /* NotImplementedView.swift in Sources */,
 				8A69E1DA273D5A2600B3B736 /* ContactListView.swift in Sources */,
+				8A69E204274056B100B3B736 /* ButtonModifier.swift in Sources */,
 				8A69E1F4273F949700B3B736 /* Header.swift in Sources */,
 				8A69E1C6273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
 				8A69E1C2273CE3E600B3B736 /* ApiView.swift in Sources */,
+				8A69E207274069DA00B3B736 /* TextFieldModifier.swift in Sources */,
 				8A69E1D7273D565F00B3B736 /* ContactListItemView.swift in Sources */,
 				8A69E1CC273CF2FD00B3B736 /* SendgridApi.swift in Sources */,
 			);
@@ -467,9 +477,11 @@
 				8A69E1E3273F6D7900B3B736 /* String+Decodable.swift in Sources */,
 				8A69E1E6273F78C700B3B736 /* NotImplementedView.swift in Sources */,
 				8A69E1DB273D5A2600B3B736 /* ContactListView.swift in Sources */,
+				8A69E205274056B100B3B736 /* ButtonModifier.swift in Sources */,
 				8A69E1F5273F949700B3B736 /* Header.swift in Sources */,
 				8A69E1C7273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
 				8A69E1C3273CE3E600B3B736 /* ApiView.swift in Sources */,
+				8A69E208274069DA00B3B736 /* TextFieldModifier.swift in Sources */,
 				8A69E1D8273D565F00B3B736 /* ContactListItemView.swift in Sources */,
 				8A69E1CD273CF2FD00B3B736 /* SendgridApi.swift in Sources */,
 			);

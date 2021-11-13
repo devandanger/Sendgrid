@@ -44,7 +44,7 @@ class ApiController {
         let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
 
         var request = URLRequest.createUrl(action: "v3/templates", query: [
-            "generation": "dynamic",
+            "generations": "dynamic",
             "page_size": "100"
         ])
         request.httpMethod = "GET"
@@ -55,8 +55,24 @@ class ApiController {
         session.finishTasksAndInvalidate()
     }
     
-    func sendTestEmail(template: String, sender: String, emails: [String], from: String, result: @escaping ApiResult) {
+    func sendTestEmail(template: String, emails: [String], from: String, result: @escaping ApiResult) {
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
         
+        var request = URLRequest.createUrl(action: "v3/marketing/test/send_email")
+        let body = """
+        {
+            "template_id": "\(template)",
+            "emails": [ "devandanger@gmail.com" ],
+            "from_address": "\(from)"
+        """.data(using: .utf8)
+        request.httpBody = body
+        request.httpMethod = "POST"
+        request.addHeaders(key: storage.apiKey)
+        
+        let task = session.dataTask(with: request, completionHandler: result)
+        task.resume()
+        session.finishTasksAndInvalidate()
     }
     
     func contactList(id listId: String, result: @escaping ApiResult) {
