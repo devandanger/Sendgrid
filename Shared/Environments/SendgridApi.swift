@@ -39,7 +39,11 @@ class ApiController {
         session.finishTasksAndInvalidate()
     }
     
-    func sendTestEmail(result: @escaping ApiResult) {
+    func getTemplates(result: @escaping ApiResult) {
+        
+    }
+    
+    func sendTestEmail(template: String, sender: String, emails: [String], from: String, result: @escaping ApiResult) {
         
     }
     
