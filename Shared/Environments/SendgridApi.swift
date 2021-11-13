@@ -40,7 +40,19 @@ class ApiController {
     }
     
     func getTemplates(result: @escaping ApiResult) {
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+
+        var request = URLRequest.createUrl(action: "v3/templates", query: [
+            "generation": "dynamic",
+            "page_size": "100"
+        ])
+        request.httpMethod = "GET"
+        request.addHeaders(key: storage.apiKey)
         
+        let task = session.dataTask(with: request, completionHandler: result)
+        task.resume()
+        session.finishTasksAndInvalidate()
     }
     
     func sendTestEmail(template: String, sender: String, emails: [String], from: String, result: @escaping ApiResult) {
@@ -73,6 +85,12 @@ class ApiController {
 }
 
 extension URLRequest {
+    fileprivate static func createUrl(action: String, query: [String: String] = [:]) -> URLRequest {
+        guard var URL = URL(string: "https://api.sendgrid.com") else { fatalError() }
+        URL.appendPathComponent(action)
+        URL = URL.appendingQueryParameters(query)
+        return URLRequest(url: URL)
+    }
     fileprivate mutating func addHeaders(key: String) {
         self.addValue("Bearer \(key)", forHTTPHeaderField: "Authorization")
         self.addValue("application/json", forHTTPHeaderField: "Content-Type")

@@ -10,11 +10,12 @@ import SwiftUI
 
 struct ContactListView: View {
     @EnvironmentObject var keyStorage: ApiKeyStorage
-    let contactList: AbbrevContact
-    @State var contacts: [Contact] = []
     var controller: ApiController {
         return ApiController(storage: keyStorage)
     }
+    let contactList: AbbrevContact
+    @State var contacts: [Contact] = []
+    
     var body: some View {
         ScrollView {
             VStack {

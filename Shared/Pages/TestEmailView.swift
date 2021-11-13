@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct TestEmailView: View {
+    @EnvironmentObject var keyStorage: ApiKeyStorage
+    var controller: ApiController {
+        return ApiController(storage: keyStorage)
+    }
+
+    @State var templates: [Template] = []
     @State var isLoading: Bool = false
     @State var fromAddress: String = "rsmith@neosportsplant"
     @State var addresses: String = ""
+    
     var body: some View {
         VStack {
             if isLoading {
@@ -51,9 +58,15 @@ struct TestEmailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                isLoading = false
-            }
+//            controller.getTemplates { (data, responseResult, error) in
+//
+//                guard let ts = try data?.toDecodable(type: ResponseResult<Template>.self)
+//                else {
+//                    return
+//                }
+//                isLoading = false
+//                self.templates = ts
+//            }
         }
     }
 }

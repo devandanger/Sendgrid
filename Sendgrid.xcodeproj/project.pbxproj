@@ -47,6 +47,12 @@
 		8A69E1F5273F949700B3B736 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F3273F949700B3B736 /* Header.swift */; };
 		8A69E1F7273F990500B3B736 /* TestEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F6273F990500B3B736 /* TestEmailView.swift */; };
 		8A69E1F8273F990500B3B736 /* TestEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F6273F990500B3B736 /* TestEmailView.swift */; };
+		8A69E1FA274019C200B3B736 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F9274019C200B3B736 /* Template.swift */; };
+		8A69E1FB274019C200B3B736 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1F9274019C200B3B736 /* Template.swift */; };
+		8A69E1FE27403FFF00B3B736 /* ViewModifier+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1FD27403FFF00B3B736 /* ViewModifier+Loading.swift */; };
+		8A69E1FF27403FFF00B3B736 /* ViewModifier+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1FD27403FFF00B3B736 /* ViewModifier+Loading.swift */; };
+		8A69E2012740410500B3B736 /* LoadingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E2002740410500B3B736 /* LoadingVStack.swift */; };
+		8A69E2022740410500B3B736 /* LoadingVStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E2002740410500B3B736 /* LoadingVStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +99,9 @@
 		8A69E1F0273F8DDD00B3B736 /* ResponseResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseResult.swift; sourceTree = "<group>"; };
 		8A69E1F3273F949700B3B736 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		8A69E1F6273F990500B3B736 /* TestEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestEmailView.swift; sourceTree = "<group>"; };
+		8A69E1F9274019C200B3B736 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		8A69E1FD27403FFF00B3B736 /* ViewModifier+Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModifier+Loading.swift"; sourceTree = "<group>"; };
+		8A69E2002740410500B3B736 /* LoadingVStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingVStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +152,7 @@
 		8A69E181273CE07100B3B736 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8A69E1FC27403FDA00B3B736 /* SwiftUI */,
 				8A69E1E0273F6D6500B3B736 /* Foundation */,
 				8A69E1DC273F67AD00B3B736 /* Pages */,
 				8A69E1D5273D564D00B3B736 /* Blocks */,
@@ -206,6 +216,7 @@
 				8A69E1D2273D4E7200B3B736 /* ContactList.swift */,
 				8A69E1E7273F7E8200B3B736 /* Contact.swift */,
 				8A69E1F0273F8DDD00B3B736 /* ResponseResult.swift */,
+				8A69E1F9274019C200B3B736 /* Template.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,6 +226,7 @@
 			children = (
 				8A69E1D6273D565F00B3B736 /* ContactListItemView.swift */,
 				8A69E1F3273F949700B3B736 /* Header.swift */,
+				8A69E2002740410500B3B736 /* LoadingVStack.swift */,
 			);
 			path = Blocks;
 			sourceTree = "<group>";
@@ -239,6 +251,14 @@
 				8A69E1ED273F89F300B3B736 /* Data+Decodable.swift */,
 			);
 			path = Foundation;
+			sourceTree = "<group>";
+		};
+		8A69E1FC27403FDA00B3B736 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				8A69E1FD27403FFF00B3B736 /* ViewModifier+Loading.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,8 +428,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A69E1E8273F7E8200B3B736 /* Contact.swift in Sources */,
+				8A69E1FA274019C200B3B736 /* Template.swift in Sources */,
 				8A69E1F7273F990500B3B736 /* TestEmailView.swift in Sources */,
 				8A69E1D3273D4E7200B3B736 /* ContactList.swift in Sources */,
+				8A69E1FE27403FFF00B3B736 /* ViewModifier+Loading.swift in Sources */,
+				8A69E2012740410500B3B736 /* LoadingVStack.swift in Sources */,
 				8A69E1AC273CE07200B3B736 /* ContentView.swift in Sources */,
 				8A69E1DE273F6C1100B3B736 /* EmailView.swift in Sources */,
 				8A69E1F1273F8DDD00B3B736 /* ResponseResult.swift in Sources */,
@@ -431,8 +454,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A69E1E9273F7E8200B3B736 /* Contact.swift in Sources */,
+				8A69E1FB274019C200B3B736 /* Template.swift in Sources */,
 				8A69E1F8273F990500B3B736 /* TestEmailView.swift in Sources */,
 				8A69E1D4273D4E7200B3B736 /* ContactList.swift in Sources */,
+				8A69E1FF27403FFF00B3B736 /* ViewModifier+Loading.swift in Sources */,
+				8A69E2022740410500B3B736 /* LoadingVStack.swift in Sources */,
 				8A69E1AD273CE07200B3B736 /* ContentView.swift in Sources */,
 				8A69E1DF273F6C1100B3B736 /* EmailView.swift in Sources */,
 				8A69E1F2273F8DDD00B3B736 /* ResponseResult.swift in Sources */,
