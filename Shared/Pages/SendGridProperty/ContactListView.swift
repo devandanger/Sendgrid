@@ -9,11 +9,8 @@ import Combine
 import SwiftUI
 
 struct ContactListView: View {
-    @EnvironmentObject var keyStorage: ApiKeyStorage
-    var controller: ApiController {
-        return ApiController(storage: keyStorage)
-    }
-    let contactList: AbbrevContact
+    let property: SendGridProperty
+//    let contactList: AbbrevContact
     @State var lists: [AbbrevContact] = []
     @State var contacts: [Contact] = []
     @State var filterContacts: String = ""
@@ -71,6 +68,6 @@ struct ContactListView_Previews: PreviewProvider {
     """.toDecodable(type: AbbrevContact.self)
     static var previews: some View {
         
-        return ContactListView(contactList: AbbrevContact(name: "Evan's list", id: "234234", count: 3))
+        return ContactListView(property: SendGridProperty(name: "Fake", apiKey: "doesn'tmatter"))
     }
 }

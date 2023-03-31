@@ -9,41 +9,27 @@ import SwiftUI
 
 struct PropertyContentView: View {
     let property: SendGridProperty
-    @State private var selection = 0
-    @State var lists: [AbbrevContact] = []
-    @State var filterContacts: String = ""
-    var filteredList: [AbbrevContact] {
-        if filterContacts.isEmpty {
-            return lists
-        } else {
-            return lists.filter { $0.name.lowercased().contains(filterContacts.lowercased()) }
-        }
-    }
+    @State var selection: Int = 0
     var body: some View {
-        NavigationStack {
-            VStack {
-                HStack {
-                    NavigationLink(destination: TestEmailView()) {
-                        HStack {
-                            Text("Test Email")
-                            Image(systemName: "testtube.2")
-                                .frame(width: 44, height: 44)
-                        }
-                    }
-                    Spacer()
-                }
-                Header(name: "Contact Lists")
-                TextField("Search", text: $filterContacts)
-                    .defaultStyle()
-                ForEach(self.filteredList, id: \.id) { contact in
-                    ContactListItemView(contact: contact)
-                }
-                Spacer()
-            }
-            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(property.name)
-            .onAppear {}
+        TabView(selection: $selection) {
+            ContactListView(property: property)
+                .font(.title)
+                .tabItem({
+                    Image(systemName: "person.3")
+                })
+                .tag(0)
+            Text(property.name)
+                .font(.title)
+                .tabItem({
+                    Image(systemName: "paperplane.fill")
+                })
+                .tag(1)
+            Text("View C")
+                .font(.title)
+                .tabItem({
+                    Image(systemName: "pencil")
+                })
+                .tag(2)
         }
     }
 }

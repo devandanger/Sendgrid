@@ -15,7 +15,8 @@ struct ContactListItemView: View {
             Text(self.contact.name)
             Spacer()
             NavigationLink {
-                ContactListView(contactList: contact)
+                NotImplementedView()
+//                ContactListView(contactList: contact)
             } label: {
                 Image(systemName: "list.bullet")
                     .frame(width: 44, height: 44)
