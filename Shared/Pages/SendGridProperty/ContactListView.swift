@@ -14,15 +14,36 @@ struct ContactListView: View {
         return ApiController(storage: keyStorage)
     }
     let contactList: AbbrevContact
+    @State var lists: [AbbrevContact] = []
     @State var contacts: [Contact] = []
+    @State var filterContacts: String = ""
+    var filteredList: [AbbrevContact] {
+        if filterContacts.isEmpty {
+            return lists
+        } else {
+            return lists.filter { $0.name.lowercased().contains(filterContacts.lowercased()) }
+        }
+    }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                ForEach(self.contacts, id: \.email) {
-                    Text($0.email)
+        VStack {
+            HStack {
+                NavigationLink(destination: TestEmailView()) {
+                    HStack {
+                        Text("Test Email")
+                        Image(systemName: "testtube.2")
+                            .frame(width: 44, height: 44)
+                    }
                 }
+                Spacer()
             }
+            Header(name: "Contact Lists")
+            TextField("Search", text: $filterContacts)
+                .defaultStyle()
+            ForEach(self.filteredList, id: \.id) { contact in
+                ContactListItemView(contact: contact)
+            }
+            Spacer()
         }.onAppear {
 //            self.controller.contactList(id: contactList.id) { data, response, error in
 //                if let d = data {

@@ -69,7 +69,10 @@ struct ApiView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        presentationMode.wrappedValue.dismiss()
+                        if self.propertyName.count > 0 && self.propertyApiKey.count > 0 {
+                            keyStorage.add(name: self.propertyName, apiKey: self.propertyApiKey)
+                            presentationMode.wrappedValue.dismiss()
+                        }
                     } label: {
                         Text("Add")
                     }

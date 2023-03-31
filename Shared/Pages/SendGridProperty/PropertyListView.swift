@@ -10,17 +10,32 @@ import SwiftUI
 struct PropertyListView: View {
     @EnvironmentObject var keyStorage: ApiKeyStorage
     @State var showSetupAPI: Bool = false
+    @State var list: [SendGridProperty] = []
     var body: some View {
         VStack {
-            if keyStorage.list().count == 0 {
+            if self.list.count == 0 {
                 Text("No properties")
             } else {
-                ForEach(keyStorage.list(), id: \.name) { property in
-                    Text(property.name)
+                ForEach(self.list, id: \.name) { property in
+                    NavigationLink {
+                        PropertyContentView(property: property)
+                    } label: {
+                        HStack {
+                            Text(property.name)
+                                .font(.title)
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .padding(10)
+                    }
+
                 }
             }
             Spacer()
 
+        }
+        .onAppear {
+            self.list = keyStorage.list()
         }
         .sheet(isPresented: self.$showSetupAPI) {
             ApiView()
