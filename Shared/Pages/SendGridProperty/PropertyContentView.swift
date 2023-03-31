@@ -9,27 +9,40 @@ import SwiftUI
 
 struct PropertyContentView: View {
     let property: SendGridProperty
+    @EnvironmentObject var apiController: ApiController
     @State var selection: Int = 0
     var body: some View {
         TabView(selection: $selection) {
             ContactListView(property: property)
                 .font(.title)
                 .tabItem({
-                    Image(systemName: "person.3")
+                    HStack {
+                        Image(systemName: "person.3")
+                        Text("Contacts")
+                    }
                 })
                 .tag(0)
             Text(property.name)
                 .font(.title)
                 .tabItem({
-                    Image(systemName: "paperplane.fill")
+                    HStack {
+                        HStack {
+                            Image(systemName: "pencil")
+                            Text("Emai Templates")
+                        }
+                    }
                 })
                 .tag(1)
             Text("View C")
                 .font(.title)
                 .tabItem({
-                    Image(systemName: "pencil")
+                    Image(systemName: "paperplane.fill")
+                    Text("Send Email")
                 })
                 .tag(2)
+        }
+        .onAppear {
+            apiController.refresh()
         }
     }
 }

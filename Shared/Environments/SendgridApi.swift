@@ -10,6 +10,24 @@ import SwiftUI
 import CombineMoya
 import Moya
 
+
+func sendGridEndpoint(with prop: SendGridProperty) -> (SendgridAPI) -> Endpoint {
+    let endpoint = { (target: SendgridAPI) -> Endpoint in
+        let defaultEndpoint = MoyaProvider.defaultEndpointMapping(for: target)
+
+        // Sign all non-authenticating requests
+        switch target {
+        default:
+            return defaultEndpoint.adding(
+                newHTTPHeaderFields: [
+                    "Authorization": "Bearer \(prop.apiKey)",
+                                      "Content-Type": "application.json"
+                ])
+        }
+    }
+    return endpoint
+}
+
 enum SendgridAPI {
     case customers
     case templates
@@ -53,51 +71,44 @@ extension SendgridAPI: TargetType {
 }
 
 typealias ApiResult = (Data?, URLResponse?, Error?) -> Void
-class ApiController {
-    let storage: ApiKeyStorage
+class ApiController: ObservableObject {
+    let provider: MoyaProvider<SendgridAPI>
     let baseUrl: String = "https://api.sendgrid.com"
-    init(storage: ApiKeyStorage) {
-        self.storage = storage
+    @Published var contactList: [AbbrevContact] = []
+    
+    init(property: SendGridProperty) {
+        provider = MoyaProvider<SendgridAPI>(
+            endpointClosure: sendGridEndpoint(with: property),
+            plugins: [
+                NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions: .formatRequestAscURL))
+            ])
+    }
+    
+    public func refresh() {
+        refreshCustomerList()
+        refreshTemplates()
     }
 
-//    func customerList(result: @escaping ApiResult) {
-//        let sessionConfig = URLSessionConfiguration.default
-//        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-//
-//
-//        guard var URL = URL(string: "\(baseUrl)/v3/marketing/lists") else {return}
-//        let URLParams = [
-//            "page_size": "100",
-//        ]
-//        URL = URL.appendingQueryParameters(URLParams)
-//        var request = URLRequest(url: URL)
-//        request.httpMethod = "GET"
-//
-//        // Headers
-//        request.addHeaders(key: storage.apiKey)
-//
-//
-//        /* Start a new Task */
-//        let task = session.dataTask(with: request, completionHandler: result)
-//        task.resume()
-//        session.finishTasksAndInvalidate()
-//    }
-//
-//    func getTemplates(result: @escaping ApiResult) {
-//        let sessionConfig = URLSessionConfiguration.default
-//        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-//
-//        var request = URLRequest.createUrl(action: "v3/templates", query: [
-//            "generations": "dynamic",
-//            "page_size": "100"
-//        ])
-//        request.httpMethod = "GET"
-//        request.addHeaders(key: storage.apiKey)
-//
-//        let task = session.dataTask(with: request, completionHandler: result)
-//        task.resume()
-//        session.finishTasksAndInvalidate()
-//    }
+    private func refreshCustomerList() {
+        provider.request(.customers) { result in
+            print("Result customer: \(result)")
+            
+            switch result {
+            case .success(let response):
+                let result = response.data.toDecodable(type: AbbrevContactList.self)
+                self.contactList = result?.list ?? []
+            case .failure(_):
+                return
+            }
+        }
+    }
+    
+    private func refreshTemplates() {
+        provider.request(.templates) { result in
+            print("Result template: \(result)")
+        }
+    }
+
 //
 //    func sendTestEmail(template: String, emails: [String], from: String, result: @escaping ApiResult) {
 //        let sessionConfig = URLSessionConfiguration.default

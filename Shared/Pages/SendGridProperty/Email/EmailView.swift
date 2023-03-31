@@ -26,6 +26,8 @@ struct EmailView: View {
 
 struct EmailView_Previews: PreviewProvider {
     static var previews: some View {
-        EmailView(contact: AbbrevContact(name: "Evan's contact list", id: "213423423", count: 2343))
+        NavigationStack {
+            EmailView(contact: AbbrevContact(name: "Evan's contact list", id: "213423423", count: 2343))
+        }
     }
 }

@@ -156,13 +156,37 @@
 		8A4AEA1229D6E34D009AEB08 /* SendGridProperty */ = {
 			isa = PBXGroup;
 			children = (
-				8A69E1D9273D5A2600B3B736 /* ContactListView.swift */,
-				8A69E1DD273F6C1000B3B736 /* EmailView.swift */,
+				8A4AEA1829D70A22009AEB08 /* Templates */,
+				8A4AEA1729D70A12009AEB08 /* Email */,
+				8A4AEA1629D709F5009AEB08 /* Contacts */,
 				8A69E183273CE07100B3B736 /* PropertyContentView.swift */,
 				8A4AEA1329D6E36D009AEB08 /* PropertyListView.swift */,
-				8A69E1F6273F990500B3B736 /* TestEmailView.swift */,
 			);
 			path = SendGridProperty;
+			sourceTree = "<group>";
+		};
+		8A4AEA1629D709F5009AEB08 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				8A69E1D9273D5A2600B3B736 /* ContactListView.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		8A4AEA1729D70A12009AEB08 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				8A69E1F6273F990500B3B736 /* TestEmailView.swift */,
+				8A69E1DD273F6C1000B3B736 /* EmailView.swift */,
+			);
+			path = Email;
+			sourceTree = "<group>";
+		};
+		8A4AEA1829D70A22009AEB08 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Templates;
 			sourceTree = "<group>";
 		};
 		8A5ECDB729D685BB0021FA22 /* Persistence */ = {

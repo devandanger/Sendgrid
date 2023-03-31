@@ -9,9 +9,9 @@ import SwiftUI
 
 struct TestEmailView: View {
     @EnvironmentObject var keyStorage: ApiKeyStorage
-    var controller: ApiController {
-        return ApiController(storage: keyStorage)
-    }
+//    var controller: ApiController {
+//        return ApiController(storage: keyStorage)
+//    }
 
     @State var templates: [Template] = []
     @State var isReadyToSend: Bool = true
@@ -109,7 +109,6 @@ struct TestEmailView_Previews: PreviewProvider {
         NavigationView {
             VStack {
                 TestEmailView()
-                    .environmentObject(ApiKeyStorage())
             }
         }
     }

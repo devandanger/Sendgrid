@@ -19,6 +19,7 @@ struct PropertyListView: View {
                 ForEach(self.list, id: \.name) { property in
                     NavigationLink {
                         PropertyContentView(property: property)
+                            .environmentObject(ApiController(property: property))
                     } label: {
                         HStack {
                             Text(property.name)

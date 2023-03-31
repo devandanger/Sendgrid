@@ -6,11 +6,13 @@
 //
 
 import Combine
+import Moya
 import SwiftUI
 
 struct ContactListView: View {
+    @EnvironmentObject var apiController: ApiController
     let property: SendGridProperty
-//    let contactList: AbbrevContact
+
     @State var lists: [AbbrevContact] = []
     @State var contacts: [Contact] = []
     @State var filterContacts: String = ""
@@ -24,24 +26,24 @@ struct ContactListView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                NavigationLink(destination: TestEmailView()) {
-                    HStack {
-                        Text("Test Email")
-                        Image(systemName: "testtube.2")
-                            .frame(width: 44, height: 44)
-                    }
-                }
-                Spacer()
-            }
+
             Header(name: "Contact Lists")
             TextField("Search", text: $filterContacts)
                 .defaultStyle()
-            ForEach(self.filteredList, id: \.id) { contact in
-                ContactListItemView(contact: contact)
+            ForEach(self.apiController.contactList, id: \.id) { contact in
+                if !filterContacts.lowercased().isEmpty {
+                    if contact.name.lowercased().contains(filterContacts.lowercased()) {
+                        ContactListItemView(contact: contact)
+                    } else {
+                        EmptyView()
+                    }
+                } else {
+                    ContactListItemView(contact: contact)
+                }
             }
             Spacer()
         }.onAppear {
+
 //            self.controller.contactList(id: contactList.id) { data, response, error in
 //                if let d = data {
 //                    d.prettyPrint()
@@ -68,6 +70,8 @@ struct ContactListView_Previews: PreviewProvider {
     """.toDecodable(type: AbbrevContact.self)
     static var previews: some View {
         
-        return ContactListView(property: SendGridProperty(name: "Fake", apiKey: "doesn'tmatter"))
+        NavigationStack {
+            ContactListView(property: SendGridProperty(name: "Fake", apiKey: "doesn'tmatter"))
+        }
     }
 }
