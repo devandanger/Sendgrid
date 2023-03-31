@@ -73,9 +73,9 @@ struct TestEmailView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    controller.sendTestEmail(template: "d-1993c321eb084cc89de555f0510b3834", emails: toAddresses, from: fromAddress, result: { data, response, error in
-                        print("Send test email")
-                    })
+//                    controller.sendTestEmail(template: "d-1993c321eb084cc89de555f0510b3834", emails: toAddresses, from: fromAddress, result: { data, response, error in
+//                        print("Send test email")
+//                    })
                 } label: {
                     Image(systemName: "paperplane")
                 }
@@ -84,16 +84,16 @@ struct TestEmailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
-            controller.getTemplates(result: { data, response, error in
-                guard
-                    let data = data,
-                    let ts = data.toDecodable(type: ResponseResult<Template>.self)
-                else {
-                    return
-                }
-                self.templates = ts.result
-                isLoading = false
-            })
+//            controller.getTemplates(result: { data, response, error in
+//                guard
+//                    let data = data,
+//                    let ts = data.toDecodable(type: ResponseResult<Template>.self)
+//                else {
+//                    return
+//                }
+//                self.templates = ts.result
+//                isLoading = false
+//            })
         }
     }
     

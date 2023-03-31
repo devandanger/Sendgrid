@@ -1,25 +1,68 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "CameraView",
-        "repositoryURL": "https://github.com/brettfazio/CameraView",
-        "state": {
-          "branch": null,
-          "revision": "bb528e129ac23f2888dee51a309bbd4b10374673",
-          "version": "0.0.1"
-        }
-      },
-      {
-        "package": "CodeScanner",
-        "repositoryURL": "https://github.com/twostraws/CodeScanner",
-        "state": {
-          "branch": null,
-          "revision": "a2144ddaa7c43a6ee00873edd4cc7815ad97942f",
-          "version": "1.0.7"
-        }
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire.git",
+      "state" : {
+        "revision" : "78424be314842833c04bc3bef5b72e85fff99204",
+        "version" : "5.6.4"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "cameraview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/brettfazio/CameraView",
+      "state" : {
+        "revision" : "bb528e129ac23f2888dee51a309bbd4b10374673",
+        "version" : "0.0.1"
+      }
+    },
+    {
+      "identity" : "codescanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/CodeScanner",
+      "state" : {
+        "revision" : "a2144ddaa7c43a6ee00873edd4cc7815ad97942f",
+        "version" : "1.0.7"
+      }
+    },
+    {
+      "identity" : "defaults",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sindresorhus/Defaults",
+      "state" : {
+        "branch" : "main",
+        "revision" : "d71bfd8ffbf944ef08eacbca5fb96d6f69bf7696"
+      }
+    },
+    {
+      "identity" : "moya",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Moya/Moya",
+      "state" : {
+        "branch" : "master",
+        "revision" : "77e67c0b25ebd785c6fe56cad544885f67c8c2c4"
+      }
+    },
+    {
+      "identity" : "reactiveswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveCocoa/ReactiveSwift.git",
+      "state" : {
+        "revision" : "c43bae3dac73fdd3cb906bd5a1914686ca71ed3c",
+        "version" : "6.7.0"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift.git",
+      "state" : {
+        "revision" : "b4307ba0b6425c0ba4178e138799946c3da594f8",
+        "version" : "6.5.0"
+      }
+    }
+  ],
+  "version" : 2
 }

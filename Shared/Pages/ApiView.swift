@@ -14,13 +14,16 @@ struct ApiView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var keyStorage: ApiKeyStorage
     @State var showCamera: Bool = false
+    @State var readInput: Bool = false
+    @State var propertyName: String = ""
+    @State var propertyApiKey: String = ""
     
     var scannerSheet : some View {
         CodeScannerView(
             codeTypes: [.qr],
             completion: { result in
                 if case let .success(code) = result {
-                    self.keyStorage.add(code)
+                    propertyName = code
                     self.showCamera.toggle()
                 }
             }
@@ -29,20 +32,15 @@ struct ApiView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Sendgrid API Key", text: $keyStorage.apiKey)
+                TextField("Sendgrid Name", text: $propertyName)
+                    .textFieldStyle(.roundedBorder)
+                    .padding(10)
+                TextField("Sendgrid API Key", text: $propertyApiKey)
                     .textFieldStyle(.roundedBorder)
                     .padding(10)
                     
                 HStack {
                     Spacer()
-                    Button {
-                        keyStorage.delete()
-                    } label: {
-                        Image(systemName: "xmark.bin")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .padding(4)
-                    }
                     Button {
                         showCamera.toggle()
                     } label: {
@@ -61,13 +59,21 @@ struct ApiView: View {
                 self.scannerSheet
             })
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Text("Cancel")
+                    }
+
+                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
-                        Image(systemName: "xmark")
+                        Text("Add")
                     }
-
+                    .disabled(self.readInput)
                 }
             }
         }

@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A4AEA1129D6DC6B009AEB08 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8A4AEA1029D6DC6B009AEB08 /* CombineMoya */; };
+		8A4AEA1429D6E36D009AEB08 /* PropertyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1329D6E36D009AEB08 /* PropertyListView.swift */; };
+		8A4AEA1529D6E36D009AEB08 /* PropertyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1329D6E36D009AEB08 /* PropertyListView.swift */; };
+		8A5ECDB629D685580021FA22 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8A5ECDB529D685580021FA22 /* Defaults */; };
+		8A5ECDB929D685D70021FA22 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5ECDB829D685D70021FA22 /* DataController.swift */; };
 		8A69E19B273CE07200B3B736 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E19A273CE07200B3B736 /* Tests_iOS.swift */; };
 		8A69E19D273CE07200B3B736 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E19C273CE07200B3B736 /* Tests_iOSLaunchTests.swift */; };
 		8A69E1A7273CE07200B3B736 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1A6273CE07200B3B736 /* Tests_macOS.swift */; };
 		8A69E1A9273CE07200B3B736 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E1A8273CE07200B3B736 /* Tests_macOSLaunchTests.swift */; };
 		8A69E1AA273CE07200B3B736 /* SendgridApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E182273CE07100B3B736 /* SendgridApp.swift */; };
 		8A69E1AB273CE07200B3B736 /* SendgridApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E182273CE07100B3B736 /* SendgridApp.swift */; };
-		8A69E1AC273CE07200B3B736 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E183273CE07100B3B736 /* ContentView.swift */; };
-		8A69E1AD273CE07200B3B736 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E183273CE07100B3B736 /* ContentView.swift */; };
+		8A69E1AC273CE07200B3B736 /* PropertyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E183273CE07100B3B736 /* PropertyContentView.swift */; };
+		8A69E1AD273CE07200B3B736 /* PropertyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E183273CE07100B3B736 /* PropertyContentView.swift */; };
 		8A69E1AE273CE07200B3B736 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A69E184273CE07200B3B736 /* Assets.xcassets */; };
 		8A69E1AF273CE07200B3B736 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A69E184273CE07200B3B736 /* Assets.xcassets */; };
 		8A69E1C0273CE2AF00B3B736 /* CameraView in Frameworks */ = {isa = PBXBuildFile; productRef = 8A69E1BF273CE2AF00B3B736 /* CameraView */; };
@@ -77,8 +82,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A4AEA1329D6E36D009AEB08 /* PropertyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListView.swift; sourceTree = "<group>"; };
+		8A5ECDB829D685D70021FA22 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		8A69E182273CE07100B3B736 /* SendgridApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendgridApp.swift; sourceTree = "<group>"; };
-		8A69E183273CE07100B3B736 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8A69E183273CE07100B3B736 /* PropertyContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyContentView.swift; sourceTree = "<group>"; };
 		8A69E184273CE07200B3B736 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A69E189273CE07200B3B736 /* Sendgrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sendgrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A69E18F273CE07200B3B736 /* Sendgrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sendgrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +122,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5ECDB629D685580021FA22 /* Defaults in Frameworks */,
 				8A69E1CA273CEED200B3B736 /* CodeScanner in Frameworks */,
+				8A4AEA1129D6DC6B009AEB08 /* CombineMoya in Frameworks */,
 				8A69E1C0273CE2AF00B3B736 /* CameraView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,6 +153,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A4AEA1229D6E34D009AEB08 /* SendGridProperty */ = {
+			isa = PBXGroup;
+			children = (
+				8A69E1D9273D5A2600B3B736 /* ContactListView.swift */,
+				8A69E1DD273F6C1000B3B736 /* EmailView.swift */,
+				8A69E183273CE07100B3B736 /* PropertyContentView.swift */,
+				8A4AEA1329D6E36D009AEB08 /* PropertyListView.swift */,
+				8A69E1F6273F990500B3B736 /* TestEmailView.swift */,
+			);
+			path = SendGridProperty;
+			sourceTree = "<group>";
+		};
+		8A5ECDB729D685BB0021FA22 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				8A5ECDB829D685D70021FA22 /* DataController.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		8A69E17C273CE07100B3B736 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +187,7 @@
 		8A69E181273CE07100B3B736 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8A5ECDB729D685BB0021FA22 /* Persistence */,
 				8A69E1FC27403FDA00B3B736 /* SwiftUI */,
 				8A69E1E0273F6D6500B3B736 /* Foundation */,
 				8A69E1DC273F67AD00B3B736 /* Pages */,
@@ -240,12 +270,9 @@
 		8A69E1DC273F67AD00B3B736 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				8A4AEA1229D6E34D009AEB08 /* SendGridProperty */,
 				8A69E1C1273CE3E600B3B736 /* ApiView.swift */,
-				8A69E183273CE07100B3B736 /* ContentView.swift */,
-				8A69E1D9273D5A2600B3B736 /* ContactListView.swift */,
-				8A69E1DD273F6C1000B3B736 /* EmailView.swift */,
 				8A69E1E4273F78C700B3B736 /* NotImplementedView.swift */,
-				8A69E1F6273F990500B3B736 /* TestEmailView.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -288,6 +315,8 @@
 			packageProductDependencies = (
 				8A69E1BF273CE2AF00B3B736 /* CameraView */,
 				8A69E1C9273CEED200B3B736 /* CodeScanner */,
+				8A5ECDB529D685580021FA22 /* Defaults */,
+				8A4AEA1029D6DC6B009AEB08 /* CombineMoya */,
 			);
 			productName = "Sendgrid (iOS)";
 			productReference = 8A69E189273CE07200B3B736 /* Sendgrid.app */;
@@ -384,6 +413,8 @@
 			packageReferences = (
 				8A69E1BE273CE2AF00B3B736 /* XCRemoteSwiftPackageReference "CameraView" */,
 				8A69E1C8273CEED200B3B736 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+				8A5ECDB429D685580021FA22 /* XCRemoteSwiftPackageReference "Defaults" */,
+				8A4AEA0F29D6DC6B009AEB08 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 8A69E18A273CE07200B3B736 /* Products */;
 			projectDirPath = "";
@@ -436,12 +467,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A69E1E8273F7E8200B3B736 /* Contact.swift in Sources */,
+				8A4AEA1429D6E36D009AEB08 /* PropertyListView.swift in Sources */,
 				8A69E1FA274019C200B3B736 /* Template.swift in Sources */,
 				8A69E1F7273F990500B3B736 /* TestEmailView.swift in Sources */,
 				8A69E1D3273D4E7200B3B736 /* ContactList.swift in Sources */,
 				8A69E1FE27403FFF00B3B736 /* ViewModifier+Loading.swift in Sources */,
+				8A5ECDB929D685D70021FA22 /* DataController.swift in Sources */,
 				8A69E2012740410500B3B736 /* LoadingVStack.swift in Sources */,
-				8A69E1AC273CE07200B3B736 /* ContentView.swift in Sources */,
+				8A69E1AC273CE07200B3B736 /* PropertyContentView.swift in Sources */,
 				8A69E1DE273F6C1100B3B736 /* EmailView.swift in Sources */,
 				8A69E1F1273F8DDD00B3B736 /* ResponseResult.swift in Sources */,
 				8A69E1EE273F89F300B3B736 /* Data+Decodable.swift in Sources */,
@@ -469,9 +502,10 @@
 				8A69E1D4273D4E7200B3B736 /* ContactList.swift in Sources */,
 				8A69E1FF27403FFF00B3B736 /* ViewModifier+Loading.swift in Sources */,
 				8A69E2022740410500B3B736 /* LoadingVStack.swift in Sources */,
-				8A69E1AD273CE07200B3B736 /* ContentView.swift in Sources */,
+				8A69E1AD273CE07200B3B736 /* PropertyContentView.swift in Sources */,
 				8A69E1DF273F6C1100B3B736 /* EmailView.swift in Sources */,
 				8A69E1F2273F8DDD00B3B736 /* ResponseResult.swift in Sources */,
+				8A4AEA1529D6E36D009AEB08 /* PropertyListView.swift in Sources */,
 				8A69E1EF273F89F300B3B736 /* Data+Decodable.swift in Sources */,
 				8A69E1AB273CE07200B3B736 /* SendgridApp.swift in Sources */,
 				8A69E1E3273F6D7900B3B736 /* String+Decodable.swift in Sources */,
@@ -572,6 +606,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -625,6 +661,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -648,7 +686,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -679,7 +717,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -713,7 +751,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mightystrong.Sendgrid;
 				PRODUCT_NAME = Sendgrid;
@@ -741,7 +779,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mightystrong.Sendgrid;
 				PRODUCT_NAME = Sendgrid;
@@ -759,7 +797,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q7BEAG244J;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -784,7 +822,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q7BEAG244J;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -903,6 +941,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A4AEA0F29D6DC6B009AEB08 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		8A5ECDB429D685580021FA22 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		8A69E1BE273CE2AF00B3B736 /* XCRemoteSwiftPackageReference "CameraView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/brettfazio/CameraView";
@@ -922,6 +976,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A4AEA1029D6DC6B009AEB08 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A4AEA0F29D6DC6B009AEB08 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		8A5ECDB529D685580021FA22 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A5ECDB429D685580021FA22 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
 		8A69E1BF273CE2AF00B3B736 /* CameraView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A69E1BE273CE2AF00B3B736 /* XCRemoteSwiftPackageReference "CameraView" */;

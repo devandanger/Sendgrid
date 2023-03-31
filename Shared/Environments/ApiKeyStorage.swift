@@ -6,34 +6,21 @@
 //
 
 import Combine
+import Defaults
 import Foundation
 import SwiftUI
 
-protocol KeyStorage {
-    var apiKey: String {
-        get
-        set
-    }
-}
-
-class ApiKeyStorage: KeyStorage, ObservableObject {
-    @AppStorage("apiKey") var apiKey: String = ""
-    
-    func delete() {
-        apiKey = ""
+class ApiKeyStorage: ObservableObject {
+    let dataController = DataController()
+    func delete(name: String) {
+        dataController.remove(by: name)
     }
     
-    func add(_ key: String) {
-        apiKey = key
+    func add(name: String, apiKey: String) {
+        dataController.add(SendGridProperty(name: name, apiKey: apiKey))
     }
-}
-
-
-class MockApiKeyStorage: KeyStorage, ObservableObject {
-    var apiKey: String
-    init(key: String) {
-        self.apiKey = key
+    
+    func list() -> [SendGridProperty] {
+        return dataController.list()
     }
-    func delete() {}
-    func add(_ key: String) {}
 }

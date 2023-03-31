@@ -7,6 +7,50 @@
 
 import Foundation
 import SwiftUI
+import CombineMoya
+import Moya
+
+enum SendgridAPI {
+    case customers
+    case templates
+    case sendTest(template: String, from: [String], to: [String])
+}
+
+extension SendgridAPI: TargetType {
+    var path: String {
+        switch self {
+        case .customers:
+            return "v3/marketing/lists"
+        case .templates:
+            return "v3/templates"
+        case .sendTest(_, _, _):
+            return "v3/marketing/test/send_email"
+        }
+    }
+    
+    var method: Moya.Method {
+        switch self {
+        case .customers:
+            return .get
+        case .templates:
+            return .get
+        case .sendTest(_, _, _):
+            return .post
+        }
+    }
+    
+    var task: Moya.Task {
+        return Task.requestPlain
+    }
+    
+    var headers: [String : String]? {
+        return [:]
+    }
+    
+    public var baseURL: URL {
+        return URL(string: "https://api.sendgrid.com")!
+    }
+}
 
 typealias ApiResult = (Data?, URLResponse?, Error?) -> Void
 class ApiController {
@@ -16,88 +60,88 @@ class ApiController {
         self.storage = storage
     }
 
-    func customerList(result: @escaping ApiResult) {
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        
-
-        guard var URL = URL(string: "\(baseUrl)/v3/marketing/lists") else {return}
-        let URLParams = [
-            "page_size": "100",
-        ]
-        URL = URL.appendingQueryParameters(URLParams)
-        var request = URLRequest(url: URL)
-        request.httpMethod = "GET"
-
-        // Headers
-        request.addHeaders(key: storage.apiKey)
-        
-
-        /* Start a new Task */
-        let task = session.dataTask(with: request, completionHandler: result)
-        task.resume()
-        session.finishTasksAndInvalidate()
-    }
-    
-    func getTemplates(result: @escaping ApiResult) {
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-
-        var request = URLRequest.createUrl(action: "v3/templates", query: [
-            "generations": "dynamic",
-            "page_size": "100"
-        ])
-        request.httpMethod = "GET"
-        request.addHeaders(key: storage.apiKey)
-        
-        let task = session.dataTask(with: request, completionHandler: result)
-        task.resume()
-        session.finishTasksAndInvalidate()
-    }
-    
-    func sendTestEmail(template: String, emails: [String], from: String, result: @escaping ApiResult) {
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        
-        var request = URLRequest.createUrl(action: "v3/marketing/test/send_email")
-        let body = """
-        {
-            "template_id": "\(template)",
-            "emails": [ "devandanger@gmail.com" ],
-            "from_address": "\(from)"
-        """.data(using: .utf8)
-        request.httpBody = body
-        request.httpMethod = "POST"
-        request.addHeaders(key: storage.apiKey)
-        
-        let task = session.dataTask(with: request, completionHandler: result)
-        task.resume()
-        session.finishTasksAndInvalidate()
-    }
-    
-    func contactList(id listId: String, result: @escaping ApiResult) {
-        let sessionConfig = URLSessionConfiguration.default
-        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        
-
-        guard let URL = URL(string: "\(baseUrl)/v3/marketing/contacts/search") else {return}
-        var request = URLRequest(url: URL)
-        request.httpMethod = "POST"
-        
-        let body = """
-        { "query": "CONTAINS(list_ids, '\(listId)')"}
-        """
-        print("Body: \(body)")
-        request.httpBody = body.data(using: .utf8)
-
-        // Headers
-        request.addHeaders(key: storage.apiKey)
-
-        /* Start a new Task */
-        let task = session.dataTask(with: request, completionHandler: result)
-        task.resume()
-        session.finishTasksAndInvalidate()
-    }
+//    func customerList(result: @escaping ApiResult) {
+//        let sessionConfig = URLSessionConfiguration.default
+//        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+//
+//
+//        guard var URL = URL(string: "\(baseUrl)/v3/marketing/lists") else {return}
+//        let URLParams = [
+//            "page_size": "100",
+//        ]
+//        URL = URL.appendingQueryParameters(URLParams)
+//        var request = URLRequest(url: URL)
+//        request.httpMethod = "GET"
+//
+//        // Headers
+//        request.addHeaders(key: storage.apiKey)
+//
+//
+//        /* Start a new Task */
+//        let task = session.dataTask(with: request, completionHandler: result)
+//        task.resume()
+//        session.finishTasksAndInvalidate()
+//    }
+//
+//    func getTemplates(result: @escaping ApiResult) {
+//        let sessionConfig = URLSessionConfiguration.default
+//        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+//
+//        var request = URLRequest.createUrl(action: "v3/templates", query: [
+//            "generations": "dynamic",
+//            "page_size": "100"
+//        ])
+//        request.httpMethod = "GET"
+//        request.addHeaders(key: storage.apiKey)
+//
+//        let task = session.dataTask(with: request, completionHandler: result)
+//        task.resume()
+//        session.finishTasksAndInvalidate()
+//    }
+//
+//    func sendTestEmail(template: String, emails: [String], from: String, result: @escaping ApiResult) {
+//        let sessionConfig = URLSessionConfiguration.default
+//        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+//
+//        var request = URLRequest.createUrl(action: "v3/marketing/test/send_email")
+//        let body = """
+//        {
+//            "template_id": "\(template)",
+//            "emails": [ "devandanger@gmail.com" ],
+//            "from_address": "\(from)"
+//        """.data(using: .utf8)
+//        request.httpBody = body
+//        request.httpMethod = "POST"
+//        request.addHeaders(key: storage.apiKey)
+//
+//        let task = session.dataTask(with: request, completionHandler: result)
+//        task.resume()
+//        session.finishTasksAndInvalidate()
+//    }
+//
+//    func contactList(id listId: String, result: @escaping ApiResult) {
+//        let sessionConfig = URLSessionConfiguration.default
+//        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
+//
+//
+//        guard let URL = URL(string: "\(baseUrl)/v3/marketing/contacts/search") else {return}
+//        var request = URLRequest(url: URL)
+//        request.httpMethod = "POST"
+//
+//        let body = """
+//        { "query": "CONTAINS(list_ids, '\(listId)')"}
+//        """
+//        print("Body: \(body)")
+//        request.httpBody = body.data(using: .utf8)
+//
+//        // Headers
+//        request.addHeaders(key: storage.apiKey)
+//
+//        /* Start a new Task */
+//        let task = session.dataTask(with: request, completionHandler: result)
+//        task.resume()
+//        session.finishTasksAndInvalidate()
+//    }
 }
 
 extension URLRequest {

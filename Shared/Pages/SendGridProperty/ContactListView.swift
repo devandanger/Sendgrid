@@ -24,18 +24,18 @@ struct ContactListView: View {
                 }
             }
         }.onAppear {
-            self.controller.contactList(id: contactList.id) { data, response, error in
-                if let d = data {
-                    d.prettyPrint()
-                }
-                guard let d = data,
-                      let decoded = d.toDecodable(type: ResponseResult<Contact>.self)
-                else {
-                    return
-                }
-                
-                contacts = decoded.result
-            }
+//            self.controller.contactList(id: contactList.id) { data, response, error in
+//                if let d = data {
+//                    d.prettyPrint()
+//                }
+//                guard let d = data,
+//                      let decoded = d.toDecodable(type: ResponseResult<Contact>.self)
+//                else {
+//                    return
+//                }
+//                
+//                contacts = decoded.result
+//            }
         }
     }
 }

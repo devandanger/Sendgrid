@@ -11,8 +11,11 @@ import SwiftUI
 struct SendgridApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(ApiKeyStorage())
+            NavigationStack{
+                PropertyListView()
+                    .environmentObject(ApiKeyStorage())
+            }
+            .navigationTitle("Properties")
         }
     }
 }
