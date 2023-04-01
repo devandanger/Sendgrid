@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PropertyListView: View {
     @EnvironmentObject var keyStorage: ApiKeyStorage
-    @State var showSetupAPI: Bool = false
+    
     @State var list: [SendGridProperty] = []
     var body: some View {
         VStack {
@@ -38,15 +38,13 @@ struct PropertyListView: View {
         .onAppear {
             self.list = keyStorage.list()
         }
-        .sheet(isPresented: self.$showSetupAPI) {
-            ApiView()
-        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    self.showSetupAPI.toggle()
+                NavigationLink {
+                    SettingsView()
+                        .environmentObject(keyStorage)
                 } label: {
-                    Image(systemName: "person")
+                    Image(systemName: "gear")
                 }
             }
         }
