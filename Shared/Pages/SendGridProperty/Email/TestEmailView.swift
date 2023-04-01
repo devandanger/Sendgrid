@@ -8,11 +8,8 @@
 import SwiftUI
 
 struct TestEmailView: View {
-    @EnvironmentObject var keyStorage: ApiKeyStorage
-//    var controller: ApiController {
-//        return ApiController(storage: keyStorage)
-//    }
-
+    @EnvironmentObject var apiController: ApiController
+    let template: Template
     @State var templates: [Template] = []
     @State var isReadyToSend: Bool = true
     @State var selectedTemplate: String? {
@@ -21,7 +18,7 @@ struct TestEmailView: View {
         }
     }
     @State var isLoading: Bool = false
-    @State var fromAddress: String = "rsmith@neosportsplant" {
+    @State var fromAddress: String = "" {
         didSet {
             setIsReadyToSend()
         }
@@ -35,7 +32,7 @@ struct TestEmailView: View {
         }
     }
     @State var showTemplates: Bool = false
-    var toAddresses: [String] = []
+    @State var toAddresses: [String] = []
     
     var body: some View {
         VStack {
@@ -45,37 +42,22 @@ struct TestEmailView: View {
             } else {
                 VStack {
                     TextField("From Address", text: $fromAddress)
+                        .textInputAutocapitalization(.never)
                         .textFieldStyle(.roundedBorder)
                         .frame(height: 60)
-                    Header(name: "Choose Template")
-                    Picker(selection: $selectedTemplate, label: Text("Choose template")
-                            .foregroundColor(Color.white)) {
-                        ForEach(self.templates, id: \.id) {
-                            Text($0.name)
-                        }
-                    }
-                    .onSubmit {
-                                
-                    }
-                    .frame(height: 50)
-                    .pickerStyle(.wheel)
-                    Header(name: "Addresses")
-                        .padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
-                    TextEditor(text: $addresses)
-                        .frame(maxHeight: 200)
-                        .textFieldStyle(.roundedBorder)
-                        .padding(20)
+                    AddAddressView(emails: $toAddresses, headerName: "To Addressses")
                     Spacer()
                 }
             }
         }
+        .navigationTitle("Using Template: \(template.name)")
         .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-//                    controller.sendTestEmail(template: "d-1993c321eb084cc89de555f0510b3834", emails: toAddresses, from: fromAddress, result: { data, response, error in
-//                        print("Send test email")
-//                    })
+                    apiController.sendTestEmail(template: self.template.id, emails: self.toAddresses, from: self.fromAddress) { error in
+                        print("Error: \(error?.localizedDescription ?? "no error")")
+                    }
                 } label: {
                     Image(systemName: "paperplane")
                 }
@@ -108,7 +90,7 @@ struct TestEmailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             VStack {
-                TestEmailView()
+                TestEmailView(template: Template(id: "", name: "Random"))
             }
         }
     }

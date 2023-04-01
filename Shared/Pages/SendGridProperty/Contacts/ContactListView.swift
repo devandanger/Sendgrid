@@ -12,51 +12,29 @@ import SwiftUI
 struct ContactListView: View {
     @EnvironmentObject var apiController: ApiController
     let property: SendGridProperty
-
-    @State var lists: [AbbrevContact] = []
     @State var contacts: [Contact] = []
     @State var filterContacts: String = ""
-    var filteredList: [AbbrevContact] {
-        if filterContacts.isEmpty {
-            return lists
-        } else {
-            return lists.filter { $0.name.lowercased().contains(filterContacts.lowercased()) }
-        }
-    }
+
     
     var body: some View {
         VStack {
-
-            Header(name: "Contact Lists")
             TextField("Search", text: $filterContacts)
                 .defaultStyle()
-            ForEach(self.apiController.contactList, id: \.id) { contact in
-                if !filterContacts.lowercased().isEmpty {
-                    if contact.name.lowercased().contains(filterContacts.lowercased()) {
-                        ContactListItemView(contact: contact)
+            ForEach(apiController.contactList, id: \.id) { contactList in
+                if !filterContacts.isEmpty {
+                    if contactList.name.lowercased().contains(filterContacts.lowercased()) {
+                        ContactListItemView(contactList: contactList)
                     } else {
                         EmptyView()
                     }
                 } else {
-                    ContactListItemView(contact: contact)
+                    ContactListItemView(contactList: contactList)
                 }
+                
             }
             Spacer()
-        }.onAppear {
-
-//            self.controller.contactList(id: contactList.id) { data, response, error in
-//                if let d = data {
-//                    d.prettyPrint()
-//                }
-//                guard let d = data,
-//                      let decoded = d.toDecodable(type: ResponseResult<Contact>.self)
-//                else {
-//                    return
-//                }
-//                
-//                contacts = decoded.result
-//            }
         }
+        .navigationTitle("Contact List")
     }
 }
 

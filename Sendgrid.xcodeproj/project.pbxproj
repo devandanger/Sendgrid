@@ -10,6 +10,12 @@
 		8A4AEA1129D6DC6B009AEB08 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 8A4AEA1029D6DC6B009AEB08 /* CombineMoya */; };
 		8A4AEA1429D6E36D009AEB08 /* PropertyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1329D6E36D009AEB08 /* PropertyListView.swift */; };
 		8A4AEA1529D6E36D009AEB08 /* PropertyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1329D6E36D009AEB08 /* PropertyListView.swift */; };
+		8A4AEA1A29D71A83009AEB08 /* TemplateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1929D71A83009AEB08 /* TemplateListView.swift */; };
+		8A4AEA1B29D71A83009AEB08 /* TemplateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1929D71A83009AEB08 /* TemplateListView.swift */; };
+		8A4AEA1D29D72753009AEB08 /* AddAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1C29D72753009AEB08 /* AddAddressView.swift */; };
+		8A4AEA1E29D72753009AEB08 /* AddAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1C29D72753009AEB08 /* AddAddressView.swift */; };
+		8A4AEA2029D7B667009AEB08 /* ContactListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1F29D7B667009AEB08 /* ContactListDetailView.swift */; };
+		8A4AEA2129D7B667009AEB08 /* ContactListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4AEA1F29D7B667009AEB08 /* ContactListDetailView.swift */; };
 		8A5ECDB629D685580021FA22 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 8A5ECDB529D685580021FA22 /* Defaults */; };
 		8A5ECDB929D685D70021FA22 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5ECDB829D685D70021FA22 /* DataController.swift */; };
 		8A69E19B273CE07200B3B736 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69E19A273CE07200B3B736 /* Tests_iOS.swift */; };
@@ -83,6 +89,9 @@
 
 /* Begin PBXFileReference section */
 		8A4AEA1329D6E36D009AEB08 /* PropertyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyListView.swift; sourceTree = "<group>"; };
+		8A4AEA1929D71A83009AEB08 /* TemplateListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateListView.swift; sourceTree = "<group>"; };
+		8A4AEA1C29D72753009AEB08 /* AddAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressView.swift; sourceTree = "<group>"; };
+		8A4AEA1F29D7B667009AEB08 /* ContactListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListDetailView.swift; sourceTree = "<group>"; };
 		8A5ECDB829D685D70021FA22 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		8A69E182273CE07100B3B736 /* SendgridApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendgridApp.swift; sourceTree = "<group>"; };
 		8A69E183273CE07100B3B736 /* PropertyContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyContentView.swift; sourceTree = "<group>"; };
@@ -168,6 +177,8 @@
 		8A4AEA1629D709F5009AEB08 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				8A4AEA1F29D7B667009AEB08 /* ContactListDetailView.swift */,
+				8A69E1D6273D565F00B3B736 /* ContactListItemView.swift */,
 				8A69E1D9273D5A2600B3B736 /* ContactListView.swift */,
 			);
 			path = Contacts;
@@ -185,6 +196,7 @@
 		8A4AEA1829D70A22009AEB08 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				8A4AEA1929D71A83009AEB08 /* TemplateListView.swift */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -284,9 +296,9 @@
 		8A69E1D5273D564D00B3B736 /* Blocks */ = {
 			isa = PBXGroup;
 			children = (
-				8A69E1D6273D565F00B3B736 /* ContactListItemView.swift */,
 				8A69E1F3273F949700B3B736 /* Header.swift */,
 				8A69E2002740410500B3B736 /* LoadingVStack.swift */,
+				8A4AEA1C29D72753009AEB08 /* AddAddressView.swift */,
 			);
 			path = Blocks;
 			sourceTree = "<group>";
@@ -494,6 +506,7 @@
 				8A4AEA1429D6E36D009AEB08 /* PropertyListView.swift in Sources */,
 				8A69E1FA274019C200B3B736 /* Template.swift in Sources */,
 				8A69E1F7273F990500B3B736 /* TestEmailView.swift in Sources */,
+				8A4AEA1A29D71A83009AEB08 /* TemplateListView.swift in Sources */,
 				8A69E1D3273D4E7200B3B736 /* ContactList.swift in Sources */,
 				8A69E1FE27403FFF00B3B736 /* ViewModifier+Loading.swift in Sources */,
 				8A5ECDB929D685D70021FA22 /* DataController.swift in Sources */,
@@ -504,12 +517,14 @@
 				8A69E1EE273F89F300B3B736 /* Data+Decodable.swift in Sources */,
 				8A69E1AA273CE07200B3B736 /* SendgridApp.swift in Sources */,
 				8A69E1E2273F6D7900B3B736 /* String+Decodable.swift in Sources */,
+				8A4AEA1D29D72753009AEB08 /* AddAddressView.swift in Sources */,
 				8A69E1E5273F78C700B3B736 /* NotImplementedView.swift in Sources */,
 				8A69E1DA273D5A2600B3B736 /* ContactListView.swift in Sources */,
 				8A69E204274056B100B3B736 /* ButtonModifier.swift in Sources */,
 				8A69E1F4273F949700B3B736 /* Header.swift in Sources */,
 				8A69E1C6273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
 				8A69E1C2273CE3E600B3B736 /* ApiView.swift in Sources */,
+				8A4AEA2029D7B667009AEB08 /* ContactListDetailView.swift in Sources */,
 				8A69E207274069DA00B3B736 /* TextFieldModifier.swift in Sources */,
 				8A69E1D7273D565F00B3B736 /* ContactListItemView.swift in Sources */,
 				8A69E1CC273CF2FD00B3B736 /* SendgridApi.swift in Sources */,
@@ -534,12 +549,15 @@
 				8A69E1AB273CE07200B3B736 /* SendgridApp.swift in Sources */,
 				8A69E1E3273F6D7900B3B736 /* String+Decodable.swift in Sources */,
 				8A69E1E6273F78C700B3B736 /* NotImplementedView.swift in Sources */,
+				8A4AEA2129D7B667009AEB08 /* ContactListDetailView.swift in Sources */,
 				8A69E1DB273D5A2600B3B736 /* ContactListView.swift in Sources */,
 				8A69E205274056B100B3B736 /* ButtonModifier.swift in Sources */,
 				8A69E1F5273F949700B3B736 /* Header.swift in Sources */,
+				8A4AEA1E29D72753009AEB08 /* AddAddressView.swift in Sources */,
 				8A69E1C7273CE4A700B3B736 /* ApiKeyStorage.swift in Sources */,
 				8A69E1C3273CE3E600B3B736 /* ApiView.swift in Sources */,
 				8A69E208274069DA00B3B736 /* TextFieldModifier.swift in Sources */,
+				8A4AEA1B29D71A83009AEB08 /* TemplateListView.swift in Sources */,
 				8A69E1D8273D565F00B3B736 /* ContactListItemView.swift in Sources */,
 				8A69E1CD273CF2FD00B3B736 /* SendgridApi.swift in Sources */,
 			);

@@ -22,13 +22,14 @@ struct PropertyContentView: View {
                     }
                 })
                 .tag(0)
-            Text(property.name)
+            TemplateListView()
+                .environmentObject(apiController)
                 .font(.title)
                 .tabItem({
                     HStack {
                         HStack {
                             Image(systemName: "pencil")
-                            Text("Emai Templates")
+                            Text("Email Templates")
                         }
                     }
                 })

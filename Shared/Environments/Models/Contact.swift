@@ -25,3 +25,15 @@ struct Contact: Decodable {
         email = try container.decode(String.self, forKey: .email)
     }
 }
+
+struct ContactList: Decodable {
+    let list: [Contact]
+    enum CodingKeys: String, CodingKey {
+        case result
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        list = try container.decode([Contact].self, forKey: .result)
+    }
+}

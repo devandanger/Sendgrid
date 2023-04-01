@@ -30,8 +30,9 @@ func sendGridEndpoint(with prop: SendGridProperty) -> (SendgridAPI) -> Endpoint 
 
 enum SendgridAPI {
     case customers
+    case getCustomers(listID: String)
     case templates
-    case sendTest(template: String, from: [String], to: [String])
+    case sendTest(template: String, from: String, to: [String])
 }
 
 extension SendgridAPI: TargetType {
@@ -39,6 +40,8 @@ extension SendgridAPI: TargetType {
         switch self {
         case .customers:
             return "v3/marketing/lists"
+        case .getCustomers(_):
+            return "v3/marketing/contacts/search"
         case .templates:
             return "v3/templates"
         case .sendTest(_, _, _):
@@ -50,6 +53,8 @@ extension SendgridAPI: TargetType {
         switch self {
         case .customers:
             return .get
+        case .getCustomers(_):
+            return .post
         case .templates:
             return .get
         case .sendTest(_, _, _):
@@ -58,7 +63,16 @@ extension SendgridAPI: TargetType {
     }
     
     var task: Moya.Task {
-        return Task.requestPlain
+        switch self {
+        case .templates:
+            return .requestParameters(parameters: ["page_size": 100, "generations": "dynamic"], encoding: URLEncoding())
+        case .getCustomers(let listID):
+            return .requestParameters(parameters: ["query": "CONTAINS(list_ids, '\(listID)')"], encoding: JSONEncoding())
+        case .sendTest(let template, let fromAddress, let toAddress):
+            return .requestParameters(parameters: ["template_id": template, "from_address": fromAddress, "emails": toAddress], encoding: JSONEncoding())
+        default:
+            return .requestPlain
+        }
     }
     
     var headers: [String : String]? {
@@ -75,13 +89,26 @@ class ApiController: ObservableObject {
     let provider: MoyaProvider<SendgridAPI>
     let baseUrl: String = "https://api.sendgrid.com"
     @Published var contactList: [AbbrevContact] = []
-    
+    @Published var templateList: [Template] = []
+
     init(property: SendGridProperty) {
         provider = MoyaProvider<SendgridAPI>(
             endpointClosure: sendGridEndpoint(with: property),
             plugins: [
                 NetworkLoggerPlugin(configuration: NetworkLoggerPlugin.Configuration(logOptions: .formatRequestAscURL))
             ])
+    }
+    
+    public func getContactList(for listID: String, completion: @escaping ([Contact], Error?) -> ()) {
+        provider.request(.getCustomers(listID: listID)) { result in
+            switch result {
+            case .success(let response):
+                let result = response.data.toDecodable(type: ContactList.self)
+                completion(result?.list ?? [], nil)
+            case .failure(let error):
+                completion([], error)
+            }
+        }
     }
     
     public func refresh() {
@@ -106,29 +133,29 @@ class ApiController: ObservableObject {
     private func refreshTemplates() {
         provider.request(.templates) { result in
             print("Result template: \(result)")
+            
+            switch result {
+            case .success(let response):
+                let result = response.data.toDecodable(type: TemplateList.self)
+                self.templateList = result?.list ?? []
+            case .failure(_):
+                return
+            }
         }
     }
 
-//
-//    func sendTestEmail(template: String, emails: [String], from: String, result: @escaping ApiResult) {
-//        let sessionConfig = URLSessionConfiguration.default
-//        let session = URLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-//
-//        var request = URLRequest.createUrl(action: "v3/marketing/test/send_email")
-//        let body = """
-//        {
-//            "template_id": "\(template)",
-//            "emails": [ "devandanger@gmail.com" ],
-//            "from_address": "\(from)"
-//        """.data(using: .utf8)
-//        request.httpBody = body
-//        request.httpMethod = "POST"
-//        request.addHeaders(key: storage.apiKey)
-//
-//        let task = session.dataTask(with: request, completionHandler: result)
-//        task.resume()
-//        session.finishTasksAndInvalidate()
-//    }
+
+    func sendTestEmail(template: String, emails: [String], from: String, completion: @escaping (Error?) -> ()) {
+        provider.request(.sendTest(template: template, from: from, to: emails)) { result in
+            switch result {
+            case .failure(let error):
+                completion(error)
+            case .success(_):
+                completion(nil)
+            }
+        }
+        
+    }
 //
 //    func contactList(id listId: String, result: @escaping ApiResult) {
 //        let sessionConfig = URLSessionConfiguration.default

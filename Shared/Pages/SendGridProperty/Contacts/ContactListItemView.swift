@@ -8,32 +8,35 @@
 import SwiftUI
 
 struct ContactListItemView: View {
-
-    let contact: AbbrevContact
+    @EnvironmentObject var apiController: ApiController
+    let contactList: AbbrevContact
+    @State var contacts: [Contact] = []
     var body: some View {
         HStack {
-            Text(self.contact.name)
+            Text(self.contactList.name)
+            ForEach(self.contacts, id: \.email) { contact in
+                Text(contact.email)
+            }
             Spacer()
             NavigationLink {
-                NotImplementedView()
-//                ContactListView(contactList: contact)
+                ContactListDetailView(contactList: contactList)
+                    .environmentObject(apiController)
             } label: {
                 Image(systemName: "list.bullet")
                     .frame(width: 44, height: 44)
             }
             NavigationLink {
-                EmailView(contact: contact)
+                EmailView(contact: contactList)
             } label: {
                 Image(systemName: "paperplane")
                     .frame(width: 44, height: 44)
             }
-
         }
     }
 }
 
 struct ContactListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ContactListItemView(contact: AbbrevContact(name: "Evan's contact", id: "123232-1232-2132", count: 3))
+        ContactListItemView(contactList: AbbrevContact(name: "Evan's contact", id: "123232-1232-2132", count: 3))
     }
 }
