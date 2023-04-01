@@ -32,7 +32,8 @@ enum SendgridAPI {
     case customers
     case getCustomers(listID: String)
     case templates
-    case sendTest(template: String, from: String, to: [String])
+    case sendTest(senderID: Int, template: String, from: String, to: [String])
+    case senders
 }
 
 extension SendgridAPI: TargetType {
@@ -44,8 +45,10 @@ extension SendgridAPI: TargetType {
             return "v3/marketing/contacts/search"
         case .templates:
             return "v3/templates"
-        case .sendTest(_, _, _):
+        case .sendTest(_, _, _, _):
             return "v3/marketing/test/send_email"
+        case .senders:
+            return "v3/verified_senders"
         }
     }
     
@@ -57,8 +60,10 @@ extension SendgridAPI: TargetType {
             return .post
         case .templates:
             return .get
-        case .sendTest(_, _, _):
+        case .sendTest(_, _, _, _):
             return .post
+        case .senders:
+            return .get
         }
     }
     
@@ -68,8 +73,8 @@ extension SendgridAPI: TargetType {
             return .requestParameters(parameters: ["page_size": 100, "generations": "dynamic"], encoding: URLEncoding())
         case .getCustomers(let listID):
             return .requestParameters(parameters: ["query": "CONTAINS(list_ids, '\(listID)')"], encoding: JSONEncoding())
-        case .sendTest(let template, let fromAddress, let toAddress):
-            return .requestParameters(parameters: ["template_id": template, "from_address": fromAddress, "emails": toAddress], encoding: JSONEncoding())
+        case .sendTest(let sender, let template, let fromAddress, let toAddress):
+            return .requestParameters(parameters: ["sender_id": sender,"template_id": template, "from_address": fromAddress, "emails": toAddress], encoding: JSONEncoding())
         default:
             return .requestPlain
         }
@@ -90,6 +95,7 @@ class ApiController: ObservableObject {
     let baseUrl: String = "https://api.sendgrid.com"
     @Published var contactList: [AbbrevContact] = []
     @Published var templateList: [Template] = []
+    @Published var senderList: [Sender] = []
 
     init(property: SendGridProperty) {
         provider = MoyaProvider<SendgridAPI>(
@@ -114,6 +120,7 @@ class ApiController: ObservableObject {
     public func refresh() {
         refreshCustomerList()
         refreshTemplates()
+        refreshSenders()
     }
 
     private func refreshCustomerList() {
@@ -143,10 +150,22 @@ class ApiController: ObservableObject {
             }
         }
     }
+    
+    private func refreshSenders() {
+        provider.request(.senders) { result in
+            switch result {
+            case .success(let response):
+                let result = response.data.toDecodable(type: ResponseResult<Sender>.self)
+                self.senderList = result?.results ?? []
+            case .failure(_):
+                return
+            }
+        }
+    }
 
 
-    func sendTestEmail(template: String, emails: [String], from: String, completion: @escaping (Error?) -> ()) {
-        provider.request(.sendTest(template: template, from: from, to: emails)) { result in
+    func sendTestEmail(senderID: Int, template: String, emails: [String], from: String, completion: @escaping (Error?) -> ()) {
+        provider.request(.sendTest(senderID: senderID, template: template, from: from, to: emails)) { result in
             switch result {
             case .failure(let error):
                 completion(error)

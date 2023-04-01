@@ -8,5 +8,5 @@
 import Foundation
 
 struct ResponseResult<D: Decodable>: Decodable {
-    let result: [D]
+    let results: [D]
 }

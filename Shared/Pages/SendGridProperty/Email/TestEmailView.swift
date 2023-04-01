@@ -33,19 +33,31 @@ struct TestEmailView: View {
     }
     @State var showTemplates: Bool = false
     @State var toAddresses: [String] = []
-    
+    @State private var senderID: Int = -1
     var body: some View {
         VStack {
             if isLoading {
                 ProgressView()
                     .scaleEffect(x: 2, y: 2, anchor: .center)
             } else {
-                VStack {
-                    TextField("From Address", text: $fromAddress)
-                        .textInputAutocapitalization(.never)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(height: 60)
-                    AddAddressView(emails: $toAddresses, headerName: "To Addressses")
+                VStack(alignment: .leading) {
+                    Section("From") {
+                        Picker("Sender ID", selection: $senderID) {
+                            ForEach(apiController.senderList, id: \.id) { sender in
+                                Text(sender.from_email).tag(sender.id)
+                            }
+                        }
+                        .pickerStyle(.menu)
+                    }
+//                    Section("From Address") {
+//                        TextField("From Address", text: $fromAddress)
+//                            .textInputAutocapitalization(.never)
+//                            .textFieldStyle(.roundedBorder)
+//                            .frame(height: 60)
+//                    }
+                    Section("To") {
+                        AddAddressView(emails: $toAddresses, headerName: "Addressses")
+                    }
                     Spacer()
                 }
             }
@@ -55,8 +67,10 @@ struct TestEmailView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    apiController.sendTestEmail(template: self.template.id, emails: self.toAddresses, from: self.fromAddress) { error in
-                        print("Error: \(error?.localizedDescription ?? "no error")")
+                    if self.senderID != -1 {
+                        apiController.sendTestEmail(senderID: self.senderID, template: self.template.id, emails: self.toAddresses, from: self.fromAddress) { error in
+                            print("Error: \(error?.localizedDescription ?? "no error")")
+                        }
                     }
                 } label: {
                     Image(systemName: "paperplane")

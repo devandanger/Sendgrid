@@ -27,6 +27,7 @@ struct ContactListItemView: View {
             }
             NavigationLink {
                 EmailView(contact: contactList)
+                    .environmentObject(apiController)
             } label: {
                 Image(systemName: "paperplane")
                     .frame(width: 44, height: 44)

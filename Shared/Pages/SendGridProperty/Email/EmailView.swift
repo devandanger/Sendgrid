@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct EmailView: View {
+    @EnvironmentObject var apiController: ApiController
     let contact: AbbrevContact
     @State var text: String = "Text"
 
     var body: some View {
-        
         VStack {
-            Text("Contact List")
             TextEditor(text: $text)
                 .frame(maxHeight: 200)
                 .textFieldStyle(.roundedBorder)
